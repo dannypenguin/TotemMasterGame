@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30104CD11D3815CA00A8B548 /* SwingAction.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30104CD01D3815CA00A8B548 /* SwingAction.sks */; };
+		30104CD31D38188300A8B548 /* FireTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30104CD21D38188300A8B548 /* FireTrap.swift */; };
+		30104CD71D38360600A8B548 /* BearTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30104CD61D38360600A8B548 /* BearTrap.sks */; };
+		306AF21D1D3D48600080FDA8 /* FireTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF21C1D3D48600080FDA8 /* FireTrap.sks */; };
+		306AF2211D3D4E270080FDA8 /* SimpleFireTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF2201D3D4E270080FDA8 /* SimpleFireTrap.sks */; };
+		306AF2251D3D7E710080FDA8 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF2231D3D7E710080FDA8 /* Fire.sks */; };
+		306AF2261D3D7E710080FDA8 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 306AF2241D3D7E710080FDA8 /* spark.png */; };
+		306AF2281D3D7F5E0080FDA8 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF2271D3D7F5E0080FDA8 /* Spark.sks */; };
 		30B59AA01D356F7B00703245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B59A9F1D356F7B00703245 /* AppDelegate.swift */; };
 		30B59AA21D356F7B00703245 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30B59AA11D356F7B00703245 /* GameScene.sks */; };
 		30B59AA41D356F7B00703245 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B59AA31D356F7B00703245 /* GameScene.swift */; };
@@ -16,6 +24,16 @@
 		30B59AAE1D356F7B00703245 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B59AAC1D356F7B00703245 /* LaunchScreen.storyboard */; };
 		30B59AB91D356F7B00703245 /* TotemMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B59AB81D356F7B00703245 /* TotemMasterTests.swift */; };
 		30B59AC41D356F7B00703245 /* TotemMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B59AC31D356F7B00703245 /* TotemMasterUITests.swift */; };
+		30B59AD21D35B9B000703245 /* ArchwayKiller.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30B59AD11D35B9B000703245 /* ArchwayKiller.sks */; };
+		30B74B201D4A6A5A007F34EB /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B74B1F1D4A6A5A007F34EB /* Coin.swift */; };
+		30C5B9751D3FE7290081AD11 /* BearTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C5B9741D3FE7290081AD11 /* BearTrap.swift */; };
+		30C5B9771D3FF3780081AD11 /* ArrowTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30C5B9761D3FF3780081AD11 /* ArrowTrap.sks */; };
+		30C5B9791D3FF3A40081AD11 /* ArrowTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C5B9781D3FF3A40081AD11 /* ArrowTrap.swift */; };
+		30C5B97B1D3FF54B0081AD11 /* ArrowWoosh.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30C5B97A1D3FF54B0081AD11 /* ArrowWoosh.sks */; };
+		30C5B97D1D4010C20081AD11 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C5B97C1D4010C20081AD11 /* Player.swift */; };
+		30C5B97F1D40440D0081AD11 /* Trap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C5B97E1D40440D0081AD11 /* Trap.swift */; };
+		30CD9FAA1D4293DF00B09B95 /* DoorTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */; };
+		30CD9FAC1D42963B00B09B95 /* Totem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CD9FAB1D42963B00B09B95 /* Totem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30104CD01D3815CA00A8B548 /* SwingAction.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SwingAction.sks; path = ../SwingAction.sks; sourceTree = "<group>"; };
+		30104CD21D38188300A8B548 /* FireTrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireTrap.swift; sourceTree = "<group>"; };
+		30104CD61D38360600A8B548 /* BearTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BearTrap.sks; sourceTree = "<group>"; };
+		306AF21C1D3D48600080FDA8 /* FireTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireTrap.sks; sourceTree = "<group>"; };
+		306AF2201D3D4E270080FDA8 /* SimpleFireTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SimpleFireTrap.sks; sourceTree = "<group>"; };
+		306AF2231D3D7E710080FDA8 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		306AF2241D3D7E710080FDA8 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		306AF2271D3D7F5E0080FDA8 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 		30B59A9C1D356F7B00703245 /* TotemMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TotemMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B59A9F1D356F7B00703245 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30B59AA11D356F7B00703245 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -51,6 +77,16 @@
 		30B59ABF1D356F7B00703245 /* TotemMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotemMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B59AC31D356F7B00703245 /* TotemMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotemMasterUITests.swift; sourceTree = "<group>"; };
 		30B59AC51D356F7B00703245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30B59AD11D35B9B000703245 /* ArchwayKiller.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ArchwayKiller.sks; sourceTree = "<group>"; };
+		30B74B1F1D4A6A5A007F34EB /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		30C5B9741D3FE7290081AD11 /* BearTrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BearTrap.swift; sourceTree = "<group>"; };
+		30C5B9761D3FF3780081AD11 /* ArrowTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ArrowTrap.sks; sourceTree = "<group>"; };
+		30C5B9781D3FF3A40081AD11 /* ArrowTrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowTrap.swift; sourceTree = "<group>"; };
+		30C5B97A1D3FF54B0081AD11 /* ArrowWoosh.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ArrowWoosh.sks; sourceTree = "<group>"; };
+		30C5B97C1D4010C20081AD11 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		30C5B97E1D40440D0081AD11 /* Trap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trap.swift; sourceTree = "<group>"; };
+		30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorTrap.swift; sourceTree = "<group>"; };
+		30CD9FAB1D42963B00B09B95 /* Totem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Totem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +114,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		306AF2221D3D50970080FDA8 /* GameTraps */ = {
+			isa = PBXGroup;
+			children = (
+				306AF2241D3D7E710080FDA8 /* spark.png */,
+				306AF2271D3D7F5E0080FDA8 /* Spark.sks */,
+				306AF2231D3D7E710080FDA8 /* Fire.sks */,
+				30C5B97A1D3FF54B0081AD11 /* ArrowWoosh.sks */,
+				30104CD01D3815CA00A8B548 /* SwingAction.sks */,
+				306AF2201D3D4E270080FDA8 /* SimpleFireTrap.sks */,
+				30B59AD11D35B9B000703245 /* ArchwayKiller.sks */,
+				30C5B9761D3FF3780081AD11 /* ArrowTrap.sks */,
+				306AF21C1D3D48600080FDA8 /* FireTrap.sks */,
+				30104CD61D38360600A8B548 /* BearTrap.sks */,
+			);
+			name = GameTraps;
+			sourceTree = "<group>";
+		};
 		30B59A931D356F7B00703245 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +158,15 @@
 				30B59AA11D356F7B00703245 /* GameScene.sks */,
 				30B59AA31D356F7B00703245 /* GameScene.swift */,
 				30B59AA51D356F7B00703245 /* GameViewController.swift */,
+				30C5B97E1D40440D0081AD11 /* Trap.swift */,
+				30CD9FAB1D42963B00B09B95 /* Totem.swift */,
+				30104CD21D38188300A8B548 /* FireTrap.swift */,
+				30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */,
+				30B74B1F1D4A6A5A007F34EB /* Coin.swift */,
+				30C5B9781D3FF3A40081AD11 /* ArrowTrap.swift */,
+				30C5B9741D3FE7290081AD11 /* BearTrap.swift */,
+				30C5B97C1D4010C20081AD11 /* Player.swift */,
+				306AF2221D3D50970080FDA8 /* GameTraps */,
 				30B59AA71D356F7B00703245 /* Main.storyboard */,
 				30B59AAA1D356F7B00703245 /* Assets.xcassets */,
 				30B59AAC1D356F7B00703245 /* LaunchScreen.storyboard */,
@@ -199,6 +261,7 @@
 				TargetAttributes = {
 					30B59A9B1D356F7B00703245 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = VASR9RY275;
 					};
 					30B59AB31D356F7B00703245 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -235,7 +298,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				306AF2261D3D7E710080FDA8 /* spark.png in Resources */,
+				306AF2211D3D4E270080FDA8 /* SimpleFireTrap.sks in Resources */,
+				306AF21D1D3D48600080FDA8 /* FireTrap.sks in Resources */,
+				30104CD71D38360600A8B548 /* BearTrap.sks in Resources */,
+				30C5B97B1D3FF54B0081AD11 /* ArrowWoosh.sks in Resources */,
+				306AF2251D3D7E710080FDA8 /* Fire.sks in Resources */,
+				306AF2281D3D7F5E0080FDA8 /* Spark.sks in Resources */,
+				30B59AD21D35B9B000703245 /* ArchwayKiller.sks in Resources */,
 				30B59AA21D356F7B00703245 /* GameScene.sks in Resources */,
+				30104CD11D3815CA00A8B548 /* SwingAction.sks in Resources */,
+				30C5B9771D3FF3780081AD11 /* ArrowTrap.sks in Resources */,
 				30B59AAE1D356F7B00703245 /* LaunchScreen.storyboard in Resources */,
 				30B59AAB1D356F7B00703245 /* Assets.xcassets in Resources */,
 				30B59AA91D356F7B00703245 /* Main.storyboard in Resources */,
@@ -263,8 +336,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30CD9FAA1D4293DF00B09B95 /* DoorTrap.swift in Sources */,
+				30C5B9791D3FF3A40081AD11 /* ArrowTrap.swift in Sources */,
+				30C5B9751D3FE7290081AD11 /* BearTrap.swift in Sources */,
+				30104CD31D38188300A8B548 /* FireTrap.swift in Sources */,
 				30B59AA41D356F7B00703245 /* GameScene.swift in Sources */,
+				30CD9FAC1D42963B00B09B95 /* Totem.swift in Sources */,
+				30C5B97F1D40440D0081AD11 /* Trap.swift in Sources */,
+				30C5B97D1D4010C20081AD11 /* Player.swift in Sources */,
 				30B59AA61D356F7B00703245 /* GameViewController.swift in Sources */,
+				30B74B201D4A6A5A007F34EB /* Coin.swift in Sources */,
 				30B59AA01D356F7B00703245 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,10 +488,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TotemMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MakeSchool.TotemMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -418,10 +502,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TotemMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MakeSchool.TotemMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -492,6 +579,7 @@
 				30B59ACA1D356F7B00703245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30B59ACB1D356F7B00703245 /* Build configuration list for PBXNativeTarget "TotemMasterTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +588,7 @@
 				30B59ACD1D356F7B00703245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30B59ACE1D356F7B00703245 /* Build configuration list for PBXNativeTarget "TotemMasterUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +597,7 @@
 				30B59AD01D356F7B00703245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
