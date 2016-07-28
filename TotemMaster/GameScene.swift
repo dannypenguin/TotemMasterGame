@@ -231,15 +231,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Trap {
         
         
         
-        scrollNode(scrollFloor1, speed: 2)
-        scrollNode(scrollFloor2, speed: 2)
+        // scrollNode(scrollFloor1, speed: 2)
+        // scrollNode(scrollFloor2, speed: 2)
         //scroll through where totems change and find all traps set the state accordingly.
     }
     
-    func scrollNode(node: SKNode, speed: CGFloat) {
-        node.position.y -= speed
-        if node.position.y < -node.frame.height/2 {
-            node.position.y += 2 * node.frame.height
-        }
-    }
+    
 }
