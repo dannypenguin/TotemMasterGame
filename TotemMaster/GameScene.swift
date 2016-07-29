@@ -139,12 +139,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Trap {
     
     
     func moveCharacter() {
-       // playerTest.position.x = 80 * characterX + 80
-       // playerTest.position.y = 142 * characterY + 71
+    // playerTest.position.x = 80 * characterX + 80
+        // playerTest.position.y = 142 * characterY + 71
         
-       let x = 80 * characterX + 80
-       let y = 142 * characterY + 71
-        let moveAction  = SKAction.moveTo(CGPoint(x: x, y: y), duration: 0.2)
+        let x = 80 * characterX + 80
+        let y = 142 * characterY + 71
+        let moveAction = SKAction.moveTo(CGPoint(x: x, y: y), duration: 0.2)
         playerTest.runAction(moveAction)
 
     }
@@ -182,8 +182,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Trap {
         
         
         (trap as! SKNode).runAction(SKAction.sequence([moveTrap, removeTrap]))
-        
-
     }
     
     func startTrapMachine() {
@@ -212,9 +210,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Trap {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
         
-        totemFront.changeTotem()
-        totemCenter.changeTotem()
-        totemBack.changeTotem()
+       // totemFront.changeTotem()
+       // totemCenter.changeTotem()
+        //totemBack.changeTotem()
         //When called it will run the animation of respective traps.
         //self.runAction(SKAction(named: "SimpleFireTrap")!)
         //self.runAction(SKAction(named: "BearTrap")!)

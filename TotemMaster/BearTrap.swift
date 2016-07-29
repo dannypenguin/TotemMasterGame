@@ -18,6 +18,7 @@ class BearTrap : SKSpriteNode, Trap {
         
         let texture = SKTexture(imageNamed: "bearTrap2")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        //anchorPoint = CGPoint(x: 0, y: 0)
         
         var textures = [SKTexture]()
         for i in 1...2 {

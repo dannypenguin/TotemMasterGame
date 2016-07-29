@@ -17,7 +17,7 @@ class Coin : SKSpriteNode, Trap {
         score = 0
         let texture = SKTexture(imageNamed: "coin")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
-        
+        //anchorPoint = CGPoint(x: 0, y: 0)
         name = "trap"
     }
     
