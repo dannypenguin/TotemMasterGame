@@ -27,9 +27,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     var floor2: SKSpriteNode!
 
     var trapNode: SKNode!
-    var trapDictionary = ["arrowtrap":[7],
-                      "beartrap":[10],
-                      "fireTrap":[5]]
+    var trapDictionary = [Totem: Trap]()
     
     var makingFloor: [SKNode] = []
     //var floorHeight: CGFloat = 568
@@ -37,6 +35,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     var deathDealer: Int = 0
     var terminateScene = false
     var gamepro: GameProtocol!
+    var nextTrap: Double = 0.0
     
     //var totemfront = Totem()
     //var totemcenter = Totem()
@@ -192,13 +191,45 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     }
     
     func isPlayerGone() -> Bool {
-        let playerPosition = masterDan.position
+        return false //isGone(masterDan)
+    
+    }
+    
+    func isGone(node: SKNode) -> Bool {
+        let nodePosition = node.position
         let cameraPosition = myCamera.position
         let width = frame.width
         let edge = cameraPosition.x + width/2.0
         
-        return playerPosition.x > edge
+        return nodePosition.x > edge
+        
+    }
     
+    func updateTraps() {
+        var holdDictionary = [Trap]()
+        for i in trapDictionary {
+            if isGone(i.1) {
+                holdDictionary.append(i.1)
+            }
+        }
+        for j in holdDictionary {
+            removeTrap(j)
+        }
+    }
+    
+    
+    func removeTrap(t: Trap) {
+        var key: Totem?
+        for i in trapDictionary {
+            if i.1 == t {
+                key = i.0
+                break
+            }
+        }
+        if let k = key {
+            trapDictionary.removeValueForKey(k)
+            t.removeFromParent()
+        }
     }
 
     override func update(currentTime: NSTimeInterval) {
@@ -210,6 +241,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         if !terminateScene {
             myCamera.position.x -= 2
             scrollSceneNodes()
+            updateTraps()
         }
     }
     
@@ -256,9 +288,10 @@ extension GameSceneCamera {
                 player = contact.bodyA.node as! Player
                 //contact.bodyB.node?.removeFromParent()
             }
-            trap.removeFromParent()
+            
             if let check = trap as? Trap {
                 player.takeDamage(check.damage())
+                removeTrap(check)
             }
         }
         else if collision == PhysicsCategory.Player | PhysicsCategory.Totem {
@@ -304,16 +337,27 @@ extension GameSceneCamera {
         return trap
     }
     
+    
+    
     func makeTrapForTotem(totem: Totem) {
         print("**** Make Trap for Delegate")
-        // make a trap 
-        let trap = makeTrap() as! SKSpriteNode
+        if let _ = trapDictionary[totem] {
+            return
+        }
+        let now = NSDate().timeIntervalSince1970
+        if nextTrap > now {
+            return
+        }
+        nextTrap = now + 2.0
+        // make a trap
+        let trap = makeTrap()
         // position trap
         trap.position.x = totem.position.x + myCamera.position.x
         trap.position.y = totem.position.y
             //myCamera.position.y + view!.frame.height/2
         // add child with trap
         trapNode.addChild(trap)
+        trapDictionary[totem] = trap
     }
 }
 

@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class ArrowTrap : SKSpriteNode, Trap {
+class ArrowTrap : Trap {
     
     var arrowWoosh: SKEmitterNode!
     
@@ -30,11 +30,11 @@ class ArrowTrap : SKSpriteNode, Trap {
         name = "trap"
     }
     
-    func damage() -> Int {
+    override func damage() -> Int {
         return 9
     }
     
-    func scoreCounter() -> Int {
+    override func scoreCounter() -> Int {
         return 1
     }
     

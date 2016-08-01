@@ -10,7 +10,7 @@ import SpriteKit
 
 
 
-class FireTrap : SKSpriteNode, Trap {
+class FireTrap : Trap {
     
     var fire: SKEmitterNode!
 
@@ -41,11 +41,11 @@ class FireTrap : SKSpriteNode, Trap {
         name = "trap"
     }
     
-    func damage() -> Int {
+    override func damage() -> Int {
         return 5
     }
     
-    func scoreCounter() -> Int {
+    override func scoreCounter() -> Int {
         return 1
     }
     

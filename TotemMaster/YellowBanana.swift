@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class YellowBanana : SKSpriteNode, Trap {
+class YellowBanana : Trap {
     
     init() {
         let texture = SKTexture(imageNamed: "banana")
@@ -22,11 +22,11 @@ class YellowBanana : SKSpriteNode, Trap {
         physicsBody!.dynamic = false
     }
     
-    func damage() -> Int {
+    override func damage() -> Int {
         return 0
     }
     
-    func scoreCounter() -> Int {
+    override func scoreCounter() -> Int {
         return 1
     }
     

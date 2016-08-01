@@ -9,7 +9,7 @@
 
 import SpriteKit
 
-class DoorTrap : SKSpriteNode, Trap {
+class DoorTrap : Trap {
     
     init() {
         
@@ -35,11 +35,11 @@ class DoorTrap : SKSpriteNode, Trap {
         name = "trap"
     }
     
-    func damage() -> Int {
+    override func damage() -> Int {
         return 7
     }
     
-    func scoreCounter() -> Int {
+    override func scoreCounter() -> Int {
         return 1
     }
     

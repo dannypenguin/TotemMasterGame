@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class BearTrap : SKSpriteNode, Trap {
+class BearTrap : Trap {
     
     var spark: SKEmitterNode!
     
@@ -42,11 +42,11 @@ class BearTrap : SKSpriteNode, Trap {
         name = "trap"
     }
     
-    func damage() -> Int {
+    override func damage() -> Int {
         return 10
     }
     
-    func scoreCounter() -> Int {
+    override func scoreCounter() -> Int {
         return 1
     }
     
