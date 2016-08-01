@@ -76,7 +76,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         
         trapNode = SKNode()
         addChild(trapNode)
-        trapNode.position.x = view.frame.width/2
+        trapNode.position.y = view.frame.height/2
         trapNode.zPosition = 25
         
         frameThird = view.frame.width / 3
@@ -308,7 +308,8 @@ extension GameSceneCamera {
         let trap = makeTrap() as! SKSpriteNode
         // position trap
         trap.position.x = totem.position.x
-        trap.position.y = myCamera.position.y + view!.frame.height/2
+        trap.position.y = totem.position.y
+            //myCamera.position.y + view!.frame.height/2
         // add child with trap
         trapNode.addChild(trap)
     }
