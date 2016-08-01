@@ -150,16 +150,16 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.Left:
             print("Move Left")
-            characterX += 1
+            characterX -= 1
         case UISwipeGestureRecognizerDirection.Right:
             print("Move Right")
-            characterX -= 1
+            characterX += 1
         case UISwipeGestureRecognizerDirection.Up:
             print("Move Up")
-            characterY -= 1
+            characterY += 1
         case UISwipeGestureRecognizerDirection.Down:
             print("Move Down")
-            characterY += 1
+            characterY -= 1
         default:
             print("Invalid Move")
         }
