@@ -33,7 +33,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     
     var makingFloor: [SKNode] = []
     //var floorHeight: CGFloat = 568
-    var floorWidth: CGFloat = 320
+    var floorWidth: CGFloat = 568
     var deathDealer: Int = 0
     var terminateScene = false
     var gamepro: GameProtocol!
@@ -106,7 +106,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         masterDan.zPosition = 50
         masterDan.anchorPoint.x = 0.5
         masterDan.anchorPoint.y = 0.5
-        masterDan.zRotation = CGFloat(M_PI)
+        //masterDan.zRotation = CGFloat(-M_PI)
         masterDan.setScale(0.9)
         
         //Handles Swipe Gestures with the use of UIKit
@@ -192,9 +192,9 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         let playerPosition = masterDan.position
         let cameraPosition = myCamera.position
         let width = frame.width
-        let edge = cameraPosition.x - width/2.0
+        let edge = cameraPosition.x + width/2.0
         
-        return playerPosition.x < edge
+        return false //playerPosition.x > edge
     
     }
 
@@ -205,7 +205,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
             gamepro.cycleScene()
         }
         if !terminateScene {
-            myCamera.position.x += 2
+            myCamera.position.x -= 2
             scrollSceneNodes()
         }
     }
@@ -228,9 +228,9 @@ extension GameSceneCamera {
     func scrollSceneNodes() {
         
         for node in makingFloor {
-            let x = node.position.y - myCamera.position.x
-            if x < -(floorWidth + view!.frame.width / 2) {
-                node.position.x += floorWidth * 2
+            let x = node.position.x - myCamera.position.x
+            if x > view!.frame.width {
+                node.position.x -= floorWidth * 2
             }
         }
     }
