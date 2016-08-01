@@ -9,5 +9,6 @@
 import Foundation
 
 protocol Trap {
-      func damage() -> Int
+    func damage() -> Int
+    func scoreCounter() -> Int
 }

@@ -46,6 +46,10 @@ class BearTrap : SKSpriteNode, Trap {
         return 10
     }
     
+    func scoreCounter() -> Int {
+        return 1
+    }
+    
     func armTrap() {
         print("The Trap is armed!")
     }

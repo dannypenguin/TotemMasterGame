@@ -39,6 +39,10 @@ class DoorTrap : SKSpriteNode, Trap {
         return 7
     }
     
+    func scoreCounter() -> Int {
+        return 1
+    }
+    
     func armTrap() {
         print("The Trap is armed!")
     }

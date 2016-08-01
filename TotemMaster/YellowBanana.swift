@@ -26,6 +26,10 @@ class YellowBanana : SKSpriteNode, Trap {
         return 0
     }
     
+    func scoreCounter() -> Int {
+        return 1
+    }
+    
     func armTrap() {
         print("The Trap is armed!")
     }

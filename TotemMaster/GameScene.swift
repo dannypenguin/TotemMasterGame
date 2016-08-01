@@ -21,7 +21,7 @@ struct PhysicsCategory {
     static let Floor:   UInt32 = 0b1000     // 01000
     static let PowerUp: UInt32 = 0b10000    // 10000
 } */
-class GameScene: SKScene, SKPhysicsContactDelegate, Trap {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var frameThird: CGFloat!
     var characterX: CGFloat = 1 {

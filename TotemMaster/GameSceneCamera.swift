@@ -32,14 +32,15 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
                       "fireTrap":[5]]
     
     var makingFloor: [SKNode] = []
-    var floorHeight: CGFloat = 568
+    //var floorHeight: CGFloat = 568
+    var floorWidth: CGFloat = 320
     var deathDealer: Int = 0
     var terminateScene = false
     var gamepro: GameProtocol!
     
-    var totemfront = Totem()
-    var totemcenter = Totem()
-    var totemback = Totem()
+    //var totemfront = Totem()
+    //var totemcenter = Totem()
+    //var totemback = Totem()
     
     // Make array of totems
     var totemMaster: [Totem] = []
@@ -86,46 +87,26 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         camera = myCamera
         
         physicsWorld.contactDelegate = self
+        var totemy: CGFloat = -102
+        var totemfront = createsTotem(totemy)
+        totemy+=102
+        var totemcenter = createsTotem(totemy)
+        totemy+=102
+        var totemback = createsTotem(totemy)
         
-        myCamera.addChild(totemfront)
-        totemfront.position.x = -100
-        totemfront.position.y = 235
-        totemfront.zPosition = 50
-        totemfront.anchorPoint.x = 0.5
-        totemfront.anchorPoint.y = 0.5
-        totemfront.zRotation = CGFloat(-M_PI/2)
-        totemfront.setScale(0.9)
-        totemfront.delegate = self
+
         
-        myCamera.addChild(totemcenter)
-        totemcenter.position.x = 0
-        totemcenter.position.y = 235
-        totemcenter.zPosition = 50
-        totemcenter.anchorPoint.x = 0.5
-        totemcenter.anchorPoint.y = 0.5
-        totemcenter.zRotation = CGFloat(-M_PI/2)
-        totemcenter.setScale(0.9)
-        totemcenter.delegate = self
-        
-        myCamera.addChild(totemback)
-        totemback.position.x = 100
-        totemback.position.y = 235
-        totemback.zPosition = 50
-        totemback.anchorPoint.x = 0.5
-        totemback.anchorPoint.y = 0.5
-        totemback.zRotation = CGFloat(-M_PI/2)
-        totemback.setScale(0.9)
-        totemback.delegate = self
+
         
         totemMaster = [totemfront, totemcenter, totemback]
         
         self.addChild(masterDan)
-        masterDan.position.x = 160
-        masterDan.position.y = 284
+        masterDan.position.x = frame.midX
+        masterDan.position.y = frame.midY
         masterDan.zPosition = 50
         masterDan.anchorPoint.x = 0.5
         masterDan.anchorPoint.y = 0.5
-        masterDan.zRotation = CGFloat(-M_PI/2)
+        masterDan.zRotation = CGFloat(M_PI)
         masterDan.setScale(0.9)
         
         //Handles Swipe Gestures with the use of UIKit
@@ -144,6 +125,23 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         view.addGestureRecognizer(swipeLeft)
         view.addGestureRecognizer(swipeUp)
         view.addGestureRecognizer(swipeDown)
+
+    }
+    
+    func createsTotem(ypos: CGFloat) -> Totem {
+        var totem = Totem()
+        
+        myCamera.addChild(totem)
+        
+        totem.position.x = -220
+        totem.position.y = ypos
+        totem.zPosition = 50
+        totem.anchorPoint.x = 0.5
+        totem.anchorPoint.y = 0.5
+        //totem.zRotation = CGFloat(-M_PI/2)
+        totem.setScale(0.9)
+        totem.delegate = self
+        return totem
 
     }
     
@@ -193,10 +191,10 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     func isPlayerGone() -> Bool {
         let playerPosition = masterDan.position
         let cameraPosition = myCamera.position
-        let height = frame.height
-        let edge = cameraPosition.y - height/2.0
+        let width = frame.width
+        let edge = cameraPosition.x - width/2.0
         
-        return playerPosition.y < edge
+        return playerPosition.x < edge
     
     }
 
@@ -207,19 +205,19 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
             gamepro.cycleScene()
         }
         if !terminateScene {
-            myCamera.position.y += 2
+            myCamera.position.x += 2
             scrollSceneNodes()
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+  /*  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        totemfront.placate()
-        totemcenter.placate()
-        totemback.placate()
+        //totemfront.placate()
+        //totemcenter.placate()
+        //totemback.placate()
     
-    }
+    }*/
 }
 
 
@@ -230,9 +228,9 @@ extension GameSceneCamera {
     func scrollSceneNodes() {
         
         for node in makingFloor {
-            let y = node.position.y - myCamera.position.y
-            if y < -(floorHeight + view!.frame.height / 2) {
-                node.position.y += floorHeight * 2
+            let x = node.position.y - myCamera.position.x
+            if x < -(floorWidth + view!.frame.width / 2) {
+                node.position.x += floorWidth * 2
             }
         }
     }
@@ -282,11 +280,7 @@ extension GameSceneCamera {
     
 }
 
-extension GameSceneCamera {
-    func inventProduct() {
-        var newInvention = []
-    }
-}
+
 
 extension GameSceneCamera {
     func makeTrap() -> Trap {
