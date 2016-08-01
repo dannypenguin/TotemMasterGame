@@ -78,6 +78,8 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         addChild(trapNode)
         trapNode.position.y = view.frame.height/2
         trapNode.zPosition = 25
+        trapNode.position.x = 0
+        
         
         frameThird = view.frame.width / 3
         
@@ -195,7 +197,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         let width = frame.width
         let edge = cameraPosition.x + width/2.0
         
-        return false //playerPosition.x > edge
+        return playerPosition.x > edge
     
     }
 
@@ -211,14 +213,14 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         }
     }
     
-  /*  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        //totemfront.placate()
-        //totemcenter.placate()
-        //totemback.placate()
+        for t in totemMaster {
+            t.placate()
+        }
     
-    }*/
+    }
 }
 
 
@@ -307,7 +309,7 @@ extension GameSceneCamera {
         // make a trap 
         let trap = makeTrap() as! SKSpriteNode
         // position trap
-        trap.position.x = totem.position.x
+        trap.position.x = totem.position.x + myCamera.position.x
         trap.position.y = totem.position.y
             //myCamera.position.y + view!.frame.height/2
         // add child with trap
