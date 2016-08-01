@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TotemMaster/GameSceneCamera.swift"
-            timestampString = "491782838.801932"
+            timestampString = "491784256.991525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "scrollSceneNodes()"
             landmarkType = "5">
          </BreakpointContent>

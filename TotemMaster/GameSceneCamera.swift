@@ -57,7 +57,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
             }
         }
     }
-    var characterX: CGFloat = 0 {
+    var characterX: CGFloat = 2 {
         didSet {
             
         }
@@ -108,6 +108,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         masterDan.anchorPoint.y = 0.5
         //masterDan.zRotation = CGFloat(-M_PI)
         masterDan.setScale(0.9)
+        
         
         //Handles Swipe Gestures with the use of UIKit
         let swipeRight = UISwipeGestureRecognizer(target: self, action:#selector(GameSceneCamera.onSwipe(_:)))
