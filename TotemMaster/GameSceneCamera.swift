@@ -47,17 +47,17 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     
     var masterDan = Player()
     var frameThird: CGFloat!
-    var characterX: CGFloat = 1 {
+    var characterY: CGFloat = 1 {
         didSet {
-            if characterX > 2 {
-                characterX = 2
+            if characterY > 2 {
+                characterY = 2
             }
-            else if characterX < 0 {
-                characterX = 0
+            else if characterY < 0 {
+                characterY = 0
             }
         }
     }
-    var characterY: CGFloat = 0 {
+    var characterX: CGFloat = 0 {
         didSet {
             
         }
@@ -150,16 +150,16 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.Left:
             print("Move Left")
-            characterX -= 1
+            characterX += 1
         case UISwipeGestureRecognizerDirection.Right:
             print("Move Right")
-            characterX += 1
+            characterX -= 1
         case UISwipeGestureRecognizerDirection.Up:
             print("Move Up")
-            characterY += 1
+            characterY -= 1
         case UISwipeGestureRecognizerDirection.Down:
             print("Move Down")
-            characterY -= 1
+            characterY += 1
         default:
             print("Invalid Move")
         }
@@ -168,8 +168,8 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     }
     
     func moveCharacter() {
-        let x = 80 * characterX + 80
-        let y = 142 * characterY + 71 // masterDan.position.y
+        let y = 58 + characterY * 102
+        let x = 142 * characterX + 71
         let moveAction  = SKAction.moveTo(CGPoint(x: x, y: y), duration: 0.2)
         masterDan.runAction(moveAction)
         
