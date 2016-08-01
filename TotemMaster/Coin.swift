@@ -10,15 +10,21 @@ import SpriteKit
 
 class Coin : SKSpriteNode, Trap {
     
-    var score:Int
+    let damage = 0.1
     
     init() {
        
-        score = 0
+        var score = 0
         let texture = SKTexture(imageNamed: "coin")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         //anchorPoint = CGPoint(x: 0, y: 0)
         name = "trap"
+        
+        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody!.categoryBitMask = PhysicsCategory.Trap
+        physicsBody!.contactTestBitMask = PhysicsCategory.Player
+        physicsBody!.collisionBitMask = PhysicsCategory.none
+        physicsBody!.dynamic = false
     }
     
     func armTrap() {

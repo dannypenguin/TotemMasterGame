@@ -166,7 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Trap {
         case 3:
             trap = DoorTrap()
         case 4:
-            trap = Coin()
+            trap = YellowBanana()
         default:
             trap = BearTrap()
         }
@@ -196,16 +196,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Trap {
     
     // MARK: Trap protocol 
     
-    func hide() {
-        self.hidden = true
-    }
     
     func damage() -> Int {
         return 10
     }
-    func setTrapState() -> Trapstate {
-        return Trapstate.Benign
-    }
+
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */

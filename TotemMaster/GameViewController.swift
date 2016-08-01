@@ -9,13 +9,18 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GameProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        cycleScene()
+    }
+    
+    func cycleScene() {
         if let scene = GameSceneCamera(fileNamed:"GameSceneCamera") {
             // Configure the view.
+            scene.setGameProtocol(self)
+            
             let skView = self.view as! SKView
             skView.showsFPS = true
             skView.showsNodeCount = true

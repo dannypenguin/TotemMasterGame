@@ -8,15 +8,34 @@
 
 import SpriteKit
 
+struct PhysicsCategory {
+    static let none: UInt32 = 0
+    static let Player: UInt32 = 0b1
+    static let Trap: UInt32 = 0b10
+    static let Totem: UInt32 = 0b100
+    static let Part: UInt32 = 0b1000
+}
+
+protocol GameProtocol: class {
+    func cycleScene()
+}
 
 
-class GameSceneCamera : SKScene, SKPhysicsContactDelegate ,Trap, TotemDelegate {
+class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     var myCamera: SKCameraNode!
     var floor1: SKSpriteNode!
     var floor2: SKSpriteNode!
+
+    var trapNode: SKNode!
+    var trapDictionary = ["arrowtrap":[7],
+                      "beartrap":[10],
+                      "fireTrap":[5]]
     
     var makingFloor: [SKNode] = []
     var floorHeight: CGFloat = 568
+    var deathDealer: Int = 0
+    var terminateScene = false
+    var gamepro: GameProtocol!
     
     var totemfront = Totem()
     var totemcenter = Totem()
@@ -43,11 +62,21 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate ,Trap, TotemDelegate {
         }
     }
     
+    func setGameProtocol(pro: GameProtocol) {
+        self.gamepro = pro
+    }
+   
+    
     
     override func didMoveToView(view: SKView) {
         
         floor1 = self.childNodeWithName("floor1") as! SKSpriteNode
         floor2 = self.childNodeWithName("floor2") as! SKSpriteNode
+        
+        trapNode = SKNode()
+        addChild(trapNode)
+        trapNode.position.x = view.frame.width/2
+        trapNode.zPosition = 25
         
         frameThird = view.frame.width / 3
         
@@ -55,6 +84,8 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate ,Trap, TotemDelegate {
         
         myCamera = self.childNodeWithName("camera") as! SKCameraNode
         camera = myCamera
+        
+        physicsWorld.contactDelegate = self
         
         myCamera.addChild(totemfront)
         totemfront.position.x = -100
@@ -98,10 +129,10 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate ,Trap, TotemDelegate {
         masterDan.setScale(0.9)
         
         //Handles Swipe Gestures with the use of UIKit
-        let swipeRight = UISwipeGestureRecognizer(target: self, action:"onSwipe:")
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: "onSwipe:")
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: "onSwipe:")
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: "onSwipe:")
+        let swipeRight = UISwipeGestureRecognizer(target: self, action:#selector(GameSceneCamera.onSwipe(_:)))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GameSceneCamera.onSwipe(_:)))
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(GameSceneCamera.onSwipe(_:)))
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(GameSceneCamera.onSwipe(_:)))
         
         swipeLeft.direction = .Left
         swipeRight.direction = .Right
@@ -145,32 +176,40 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate ,Trap, TotemDelegate {
         masterDan.runAction(moveAction)
         
     }
-    
 
-    func startTrapMachine() {
-        var nextInterval = 2.0
-        var timer = NSDate().timeIntervalSince1970
-        var nextTime = 0.0
-        
-        var count = 0
-        while(count < 5) {
-            let thisTime = NSDate().timeIntervalSince1970
-            if thisTime > nextTime {
-                print("Next time! \(thisTime)")
-                nextTime = thisTime + nextInterval
-                count += 1
-                
-                if count > 1 {
-                    nextInterval -= 0.5
-                }
-            }
-            sleep(1)
+    
+    func damage() -> Int {
+        return 0
+    }
+    
+    func terminate() {
+        terminateScene = true
+        for i in totemMaster {
+            i.terminate()
+            
         }
+    }
+    
+    func isPlayerGone() -> Bool {
+        let playerPosition = masterDan.position
+        let cameraPosition = myCamera.position
+        let height = frame.height
+        let edge = cameraPosition.y - height/2.0
+        
+        return playerPosition.y < edge
+    
     }
 
     override func update(currentTime: NSTimeInterval) {
-        myCamera.position.y += 2
-        scrollSceneNodes()
+        
+        if isPlayerGone() || masterDan.isDead() {
+            self.terminate()
+            gamepro.cycleScene()
+        }
+        if !terminateScene {
+            myCamera.position.y += 2
+            scrollSceneNodes()
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -194,57 +233,89 @@ extension GameSceneCamera {
             let y = node.position.y - myCamera.position.y
             if y < -(floorHeight + view!.frame.height / 2) {
                 node.position.y += floorHeight * 2
-                addContentToSceneNode(node) // ****
             }
         }
     }
 }
 
 extension GameSceneCamera {
+    func didBeginContact(contact: SKPhysicsContact) {
+        let collision = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        if collision == PhysicsCategory.Player | PhysicsCategory.Trap {
+            var player: Player!
+            var trap: SKSpriteNode!
+            print("Player Hit Trap")
+            if contact.bodyA.node!.name == "trap" {
+                trap = contact.bodyA.node as! SKSpriteNode
+                player = contact.bodyB.node as! Player
+                //contact.bodyA.node?.removeFromParent()
+            }
+            else if contact.bodyB.node!.name == "trap" {
+                trap = contact.bodyB.node as! SKSpriteNode
+                player = contact.bodyA.node as! Player
+                //contact.bodyB.node?.removeFromParent()
+            }
+            trap.removeFromParent()
+            if let check = trap as? Trap {
+                player.takeDamage(check.damage())
+            }
+        }
+        else if collision == PhysicsCategory.Player | PhysicsCategory.Totem {
+            print("Player Hit Totem")
+        }
+    }
+}
+
+extension GameSceneCamera {
+    func makePart() -> SKSpriteNode {
+        let partSize = CGSize(width: 50.0, height: 50.0)
+        let part = SKSpriteNode(color: UIColor.redColor(), size: partSize)
+        physicsBody = SKPhysicsBody(circleOfRadius: 25)
+        physicsBody!.categoryBitMask = PhysicsCategory.Part
+        physicsBody!.contactTestBitMask = PhysicsCategory.Player
+        physicsBody!.collisionBitMask = PhysicsCategory.none
+        physicsBody!.dynamic = false
+        
+        return part
+        
+    }
+    
+}
+
+extension GameSceneCamera {
+    func inventProduct() {
+        var newInvention = []
+    }
+}
+
+extension GameSceneCamera {
+    func makeTrap() -> Trap {
+        var trap: Trap
+        let r = arc4random() % 5
+        switch r {
+        case 0:
+            trap = BearTrap()
+        case 1:
+            trap = FireTrap()
+        case 2:
+            trap = DoorTrap()
+        case 3:
+            trap = ArrowTrap()
+        default:
+            trap = YellowBanana()
+        }
+        return trap
+    }
+    
     func makeTrapForTotem(totem: Totem) {
         print("**** Make Trap for Delegate")
-    }
-}
-
-
-
-
-extension GameSceneCamera {
-    func addContentToSceneNode(node: SKNode) { // ****
-        node.removeAllChildren()
-        print("Reached")
-        // Loop through totem array 
-        // is this totem angry? 
-        // make trap
-        for totem in totemMaster {
-            if totem.shouldAttack() {
-                // Make a trap in the lane of this totem
-                //totem.position.x
-                var trap: Trap
-                
-                print("A trap has been made")
-                switch arc4random() % 5 {
-                case 0:
-                    trap = BearTrap()
-                case 1:
-                    trap = FireTrap()
-                case 2:
-                    trap = ArrowTrap()
-                case 3:
-                    trap = DoorTrap()
-                case 4:
-                    trap = Coin()
-                default:
-                    trap = BearTrap()
-                }
-                
-                (trap as! SKNode).position.x = totem.position.x
-                (trap as! SKNode).position.y = 60
-                (trap as! SKNode).zPosition = 33
-                
-                node.addChild(trap as! SKNode)
-            }
-        }
+        // make a trap 
+        let trap = makeTrap() as! SKSpriteNode
+        // position trap
+        trap.position.x = totem.position.x
+        trap.position.y = myCamera.position.y + view!.frame.height/2
+        // add child with trap
+        trapNode.addChild(trap)
     }
 }
 

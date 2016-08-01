@@ -11,10 +11,8 @@ import SpriteKit
 
 class DoorTrap : SKSpriteNode, Trap {
     
-    let damage = 0.3
-    
     init() {
-        var doorTrapState = Trapstate.Benign
+        
         
         let texture = SKTexture(imageNamed: "trapDoor1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
@@ -23,12 +21,22 @@ class DoorTrap : SKSpriteNode, Trap {
          for i in 1...4 {
          textures.append(SKTexture(imageNamed: "trapDoor\(i)"))
          }
+        
+        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody!.categoryBitMask = PhysicsCategory.Trap
+        physicsBody!.contactTestBitMask = PhysicsCategory.Player
+        physicsBody!.collisionBitMask = PhysicsCategory.none
+        physicsBody!.dynamic = false
          
          let animate = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
          let animateForever = SKAction.repeatActionForever(animate)
          runAction(animateForever)
         
         name = "trap"
+    }
+    
+    func damage() -> Int {
+        return 7
     }
     
     func armTrap() {

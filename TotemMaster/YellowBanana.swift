@@ -1,46 +1,38 @@
 //
-//  ArrowTrap.swift
+//  YellowBanana.swift
 //  TotemMaster
 //
-//  Created by Danny Peng on 7/20/16.
+//  Created by Danny Peng on 8/1/16.
 //  Copyright © 2016 Danny Peng. All rights reserved.
 //
 
 import SpriteKit
 
-class ArrowTrap : SKSpriteNode, Trap {
-    
-    var arrowWoosh: SKEmitterNode!
+class YellowBanana : SKSpriteNode, Trap {
     
     init() {
-                
-        let texture = SKTexture(imageNamed: "arrowTrap")
+        let texture = SKTexture(imageNamed: "banana")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        name = "trap"
         
         physicsBody = SKPhysicsBody(circleOfRadius: 50)
         physicsBody!.categoryBitMask = PhysicsCategory.Trap
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.none
         physicsBody!.dynamic = false
-        
-        arrowWoosh = SKEmitterNode(fileNamed: "ArrowWoosh")!
-        arrowWoosh.targetNode = parent
-        addChild(arrowWoosh)
-        arrowWoosh.zPosition = 44
-        name = "trap"
     }
     
     func damage() -> Int {
-        return 9
+        return 0
     }
     
     func armTrap() {
         print("The Trap is armed!")
     }
     
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    
 }

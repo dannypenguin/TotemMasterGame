@@ -10,6 +10,9 @@
 import SpriteKit
 
 class Player : SKSpriteNode {
+    
+    var health = 1
+    
     init() {
         let texture = SKTexture(imageNamed: "monkey1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
@@ -19,10 +22,26 @@ class Player : SKSpriteNode {
             textures.append(SKTexture(imageNamed: "monkey\(i)"))
         }
         
+        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody!.categoryBitMask = PhysicsCategory.Player
+        physicsBody!.contactTestBitMask = PhysicsCategory.Trap | PhysicsCategory.Totem
+        physicsBody!.collisionBitMask = PhysicsCategory.none
+        physicsBody!.affectedByGravity = false
+        physicsBody!.allowsRotation = false
+        
         let animate = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
         let animateForever = SKAction.repeatActionForever(animate)
         runAction(animateForever)
+        name = "player"
 
+    }
+    
+    func takeDamage(damage: Int) {
+        health -= damage
+    }
+    
+    func isDead() -> Bool {
+        return health <= 0
     }
     
     

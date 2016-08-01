@@ -10,11 +10,10 @@ import SpriteKit
 
 class BearTrap : SKSpriteNode, Trap {
     
-    let damage = 0.3
     var spark: SKEmitterNode!
     
     init() {
-        var bearTrapState = Trapstate.Benign
+        
         
         let texture = SKTexture(imageNamed: "bearTrap2")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
@@ -24,6 +23,12 @@ class BearTrap : SKSpriteNode, Trap {
         for i in 1...2 {
             textures.append(SKTexture(imageNamed: "bearTrap\(i)"))
         }
+        
+        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody!.categoryBitMask = PhysicsCategory.Trap
+        physicsBody!.contactTestBitMask = PhysicsCategory.Player
+        physicsBody!.collisionBitMask = PhysicsCategory.none
+        physicsBody!.dynamic = false
         
         let animate = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
         let animateForever = SKAction.repeatActionForever(animate)
@@ -35,6 +40,10 @@ class BearTrap : SKSpriteNode, Trap {
         spark.position.x = 15
         spark.position.y = -5
         name = "trap"
+    }
+    
+    func damage() -> Int {
+        return 10
     }
     
     func armTrap() {

@@ -12,11 +12,10 @@ import SpriteKit
 
 class FireTrap : SKSpriteNode, Trap {
     
-    let damage = 0.3
     var fire: SKEmitterNode!
-    
+
     init() {
-        var fireTrapState = Trapstate.Benign
+        
 
         let texture = SKTexture(imageNamed: "firePitRev1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
@@ -26,6 +25,12 @@ class FireTrap : SKSpriteNode, Trap {
             textures.append(SKTexture(imageNamed: "firePitRev\(i)"))
         }
         
+        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody!.categoryBitMask = PhysicsCategory.Trap
+        physicsBody!.contactTestBitMask = PhysicsCategory.Player
+        physicsBody!.collisionBitMask = PhysicsCategory.none
+        physicsBody!.dynamic = false
+        
         let animate = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
         let animateForever = SKAction.repeatActionForever(animate)
         runAction(animateForever)
@@ -34,6 +39,10 @@ class FireTrap : SKSpriteNode, Trap {
         addChild(fire)
         fire.zPosition = 44
         name = "trap"
+    }
+    
+    func damage() -> Int {
+        return 5
     }
     
     func armTrap() {
