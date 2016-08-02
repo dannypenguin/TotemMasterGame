@@ -11,7 +11,9 @@ import SpriteKit
 
 class Player : SKSpriteNode {
     
-    var health = 25
+    
+    static let maxHealth = 25
+    var health = maxHealth
     
     init() {
         let texture = SKTexture(imageNamed: "monkey1")
@@ -36,8 +38,10 @@ class Player : SKSpriteNode {
 
     }
     
-    func takeDamage(damage: Int) {
+    func takeDamage(damage: Int) -> CGFloat {
         health -= damage
+        return CGFloat(health)/CGFloat(Player.maxHealth)
+        
     }
     
     func isDead() -> Bool {

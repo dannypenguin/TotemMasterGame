@@ -23,6 +23,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var myCamera: SKCameraNode!
     var floor1: SKSpriteNode!
     var floor2: SKSpriteNode!
+    var lifeBarFront: SKSpriteNode!
 
     var trapNode: SKNode!
     var trapDictionary = [Totem: Trap]()
@@ -76,6 +77,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         floor2 = self.childNodeWithName("floor2") as! SKSpriteNode
         
         scoreCount = self.childNodeWithName("//scoreCount") as! SKLabelNode
+        
+        lifeBarFront = self.childNodeWithName("//lifeBarFront") as! SKSpriteNode
         
         updateScore(0)
         
@@ -313,7 +316,8 @@ extension GameSceneCamera {
             }
             
             if let check = trap as? Trap {
-                player.takeDamage(check.damage())
+                let damageScale = player.takeDamage(check.damage())
+                lifeBarFront.xScale = damageScale
                 removeTrap(check)
                 updateScore(check.scoreCounter())
                 
