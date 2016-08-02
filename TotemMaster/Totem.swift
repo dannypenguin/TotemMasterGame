@@ -9,7 +9,7 @@
 import SpriteKit
 
 protocol TotemDelegate: class {
-    func makeTrapForTotem(totem: Totem)
+    func makeTrapForTotem(totem: Totem, powerup: Bool)
 }
 
 enum TotemColor: String {
@@ -27,7 +27,7 @@ class Totem : SKSpriteNode {
                 self.texture = textures[anger]
                 if anger == 2 {
                     if let delegate = delegate {
-                        delegate.makeTrapForTotem(self)
+                        delegate.makeTrapForTotem(self, powerup:false)
                     }
                 }
             }

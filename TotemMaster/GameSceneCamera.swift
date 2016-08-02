@@ -38,6 +38,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var gamepro: GameProtocol!
     var nextTrap: Double = 0.0
     var scoreCount: SKLabelNode!
+    var nextBanana: NSTimeInterval = 0
     
     //var totemfront = Totem()
     //var totemcenter = Totem()
@@ -233,13 +234,25 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         }
         if let k = key {
             trapDictionary.removeValueForKey(k)
-            t.removeFromParent()
         }
+        t.removeFromParent()
     }
     
     func updateScore(bonus: Int){
         let newScore = gamepro.incrementScore(bonus)
         scoreCount.text = String(newScore)
+    }
+    
+    func updateBananas() {
+        let now = NSDate().timeIntervalSince1970
+        if now > nextBanana {
+            let totem = totemMaster[random() % totemMaster.count]
+            if totem.anger < 2 {
+                self.makeTrapForTotem(totem, powerup: true)
+                nextBanana = now + Double((arc4random() % 20))/10.0
+            }
+        }
+        
     }
 
     override func update(currentTime: NSTimeInterval) {
@@ -252,16 +265,16 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             myCamera.position.x -= 2
             scrollSceneNodes()
             updateTraps()
+            updateBananas()
         }
+    
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        for t in totemMaster {
-            t.placate()
-        }
-    
+        let t = totemMaster[Int(characterY)]
+        t.placate()
     }
 }
 
@@ -345,32 +358,40 @@ extension GameSceneCamera {
         case 3:
             trap = ArrowTrap()
         default:
-            trap = YellowBanana()
+            trap = ArrowTrap()
         }
         return trap
     }
     
     
     
-    func makeTrapForTotem(totem: Totem) {
+    func makeTrapForTotem(totem: Totem, powerup: Bool) {
+        var trap:Trap?
         print("**** Make Trap for Delegate")
-        if let _ = trapDictionary[totem] {
-            return
+        
+        if !powerup {
+            if let _ = trapDictionary[totem] {
+                return
+            }
+            let now = NSDate().timeIntervalSince1970
+            if nextTrap > now {
+                return
+            }
+            nextTrap = now + 2.0
+            // make a trap
+            trap = makeTrap()
+            trapDictionary[totem] = trap!
+        } else {
+            trap = YellowBanana()
         }
-        let now = NSDate().timeIntervalSince1970
-        if nextTrap > now {
-            return
-        }
-        nextTrap = now + 2.0
-        // make a trap
-        let trap = makeTrap()
-        // position trap
-        trap.position.x = totem.position.x + myCamera.position.x
-        trap.position.y = totem.position.y
+        if let t = trap {
+            // position trap
+            t.position.x = totem.position.x + myCamera.position.x
+            t.position.y = totem.position.y
             //myCamera.position.y + view!.frame.height/2
-        // add child with trap
-        trapNode.addChild(trap)
-        trapDictionary[totem] = trap
+            // add child with trap
+            trapNode.addChild(t)
+        }
     }
 }
 

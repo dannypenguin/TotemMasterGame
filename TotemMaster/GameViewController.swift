@@ -29,6 +29,7 @@ class GameViewController: UIViewController, GameProtocol {
     func startGame() {
         if let scene = GameSceneCamera(fileNamed:"GameSceneCamera") {
             massageScene(scene)
+            self.score = 0
         }
     }
     
