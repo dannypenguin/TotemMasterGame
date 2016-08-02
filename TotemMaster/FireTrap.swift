@@ -46,7 +46,7 @@ class FireTrap : Trap {
     }
     
     override func scoreCounter() -> Int {
-        return 1
+        return 0
     }
     
     func armTrap() {

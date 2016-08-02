@@ -41,6 +41,7 @@
 		30CE07C41D51089900AC4B13 /* ScenePro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE07C31D51089900AC4B13 /* ScenePro.swift */; };
 		30CE07C61D5108D000AC4B13 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE07C51D5108D000AC4B13 /* Controller.swift */; };
 		30CE07C81D51090000AC4B13 /* OpeningScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE07C71D51090000AC4B13 /* OpeningScene.swift */; };
+		30CE07CA1D51182C00AC4B13 /* GameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE07C91D51182C00AC4B13 /* GameProtocol.swift */; };
 		30EAD7181D4FC37600C08673 /* YellowBanana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EAD7171D4FC37600C08673 /* YellowBanana.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		30CE07C31D51089900AC4B13 /* ScenePro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScenePro.swift; sourceTree = "<group>"; };
 		30CE07C51D5108D000AC4B13 /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		30CE07C71D51090000AC4B13 /* OpeningScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningScene.swift; sourceTree = "<group>"; };
+		30CE07C91D51182C00AC4B13 /* GameProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProtocol.swift; sourceTree = "<group>"; };
 		30EAD7171D4FC37600C08673 /* YellowBanana.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YellowBanana.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,7 +178,7 @@
 				30B74B231D4A8631007F34EB /* GameSceneCamera.sks */,
 				30B74B211D4A8607007F34EB /* GameSceneCamera.swift */,
 				30B59AA51D356F7B00703245 /* GameViewController.swift */,
-				30EAD7171D4FC37600C08673 /* YellowBanana.swift */,
+				30CE07C91D51182C00AC4B13 /* GameProtocol.swift */,
 				30CE07C31D51089900AC4B13 /* ScenePro.swift */,
 				30CE07C51D5108D000AC4B13 /* Controller.swift */,
 				30CE07BD1D51030200AC4B13 /* OpeningScene.sks */,
@@ -185,6 +187,7 @@
 				30CE07C11D51085A00AC4B13 /* GameOverScene.swift */,
 				30C5B97E1D40440D0081AD11 /* Trap.swift */,
 				30CD9FAB1D42963B00B09B95 /* Totem.swift */,
+				30EAD7171D4FC37600C08673 /* YellowBanana.swift */,
 				30104CD21D38188300A8B548 /* FireTrap.swift */,
 				30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */,
 				30C5B9781D3FF3A40081AD11 /* ArrowTrap.swift */,
@@ -378,6 +381,7 @@
 				30C5B97F1D40440D0081AD11 /* Trap.swift in Sources */,
 				30C5B97D1D4010C20081AD11 /* Player.swift in Sources */,
 				30B59AA61D356F7B00703245 /* GameViewController.swift in Sources */,
+				30CE07CA1D51182C00AC4B13 /* GameProtocol.swift in Sources */,
 				30B59AA01D356F7B00703245 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

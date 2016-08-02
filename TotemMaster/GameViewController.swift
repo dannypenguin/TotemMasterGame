@@ -10,6 +10,8 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController, GameProtocol {
+    
+    var score: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,15 @@ class GameViewController: UIViewController, GameProtocol {
         if let scene = GameOverScene(fileNamed:"GameOverScene") {
             massageScene(scene)
         }
+    }
+    
+    func getScore() -> Int {
+        return score
+    }
+    
+    func incrementScore(bonus: Int) -> Int {
+        score += bonus
+        return score
     }
 
     override func shouldAutorotate() -> Bool {

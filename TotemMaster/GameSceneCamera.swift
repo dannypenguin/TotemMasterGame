@@ -17,12 +17,6 @@ struct PhysicsCategory {
     static let Part: UInt32 = 0b1000
 }
 
-protocol GameProtocol: class {
-    //func cycleScene()
-    func startGame()
-    func gameOver()
-    
-}
 
 
 class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate {
@@ -43,6 +37,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var terminateScene = false
     var gamepro: GameProtocol!
     var nextTrap: Double = 0.0
+    var scoreCount: SKLabelNode!
     
     //var totemfront = Totem()
     //var totemcenter = Totem()
@@ -78,6 +73,10 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         
         floor1 = self.childNodeWithName("floor1") as! SKSpriteNode
         floor2 = self.childNodeWithName("floor2") as! SKSpriteNode
+        
+        scoreCount = self.childNodeWithName("//scoreCount") as! SKLabelNode
+        
+        updateScore(0)
         
         trapNode = SKNode()
         addChild(trapNode)
@@ -237,6 +236,11 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             t.removeFromParent()
         }
     }
+    
+    func updateScore(bonus: Int){
+        let newScore = gamepro.incrementScore(bonus)
+        scoreCount.text = String(newScore)
+    }
 
     override func update(currentTime: NSTimeInterval) {
         
@@ -298,6 +302,9 @@ extension GameSceneCamera {
             if let check = trap as? Trap {
                 player.takeDamage(check.damage())
                 removeTrap(check)
+                updateScore(check.scoreCounter())
+                
+                //update score on screen
             }
         }
         else if collision == PhysicsCategory.Player | PhysicsCategory.Totem {
