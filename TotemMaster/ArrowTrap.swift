@@ -28,6 +28,7 @@ class ArrowTrap : Trap {
         addChild(arrowWoosh)
         arrowWoosh.zPosition = 44
         name = "trap"
+        self.runAction(SKAction.rotateByAngle(CGFloat(M_PI/2), duration: 0))
     }
     
     override func damage() -> Int {
