@@ -15,7 +15,7 @@ class YellowBanana : Trap {
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         name = "trap"
         
-        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody = SKPhysicsBody(circleOfRadius: 25)
         physicsBody!.categoryBitMask = PhysicsCategory.Trap
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.none

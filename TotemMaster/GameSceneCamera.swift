@@ -41,6 +41,12 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var scoreCount: SKLabelNode!
     var nextBanana: NSTimeInterval = 0
     
+    static let totalTimeRound = 30
+    
+    var timeCount: SKLabelNode!
+    var gameOverTime: NSTimeInterval = 0
+    var currentTime = 0
+    
     //var totemfront = Totem()
     //var totemcenter = Totem()
     //var totemback = Totem()
@@ -79,6 +85,12 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         scoreCount = self.childNodeWithName("//scoreCount") as! SKLabelNode
         
         lifeBarFront = self.childNodeWithName("//lifeBarFront") as! SKSpriteNode
+        
+        timeCount = self.childNodeWithName("//timeCount") as! SKLabelNode
+        
+        let now = NSDate().timeIntervalSince1970
+        gameOverTime = now + Double(GameSceneCamera.totalTimeRound)
+        updateTime()
         
         updateScore(0)
         
@@ -137,6 +149,16 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         view.addGestureRecognizer(swipeUp)
         view.addGestureRecognizer(swipeDown)
 
+    }
+    
+    func updateTime() -> Bool{
+        let now = NSDate().timeIntervalSince1970
+        let temp = Int(gameOverTime - now)
+        if temp != self.currentTime {
+             timeCount.text = String(temp)
+            self.currentTime = temp
+        }
+        return self.currentTime == 0
     }
     
     func createsTotem(ypos: CGFloat) -> Totem {
@@ -260,7 +282,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
 
     override func update(currentTime: NSTimeInterval) {
         
-        if isPlayerGone() || masterDan.isDead() {
+        if updateTime() || isPlayerGone() || masterDan.isDead() {
             self.terminate()
             gamepro.gameOver()
         }

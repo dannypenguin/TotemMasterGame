@@ -25,7 +25,7 @@ class FireTrap : Trap {
             textures.append(SKTexture(imageNamed: "firePitRev\(i)"))
         }
         
-        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody = SKPhysicsBody(circleOfRadius: 25)
         physicsBody!.categoryBitMask = PhysicsCategory.Trap
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.none

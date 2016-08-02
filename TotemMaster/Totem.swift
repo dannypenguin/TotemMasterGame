@@ -50,7 +50,7 @@ class Totem : SKSpriteNode {
         cycleTotem()
         anger = 0
         
-        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody = SKPhysicsBody(circleOfRadius: 25)
         physicsBody!.categoryBitMask = PhysicsCategory.Totem
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.none

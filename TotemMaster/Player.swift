@@ -24,7 +24,7 @@ class Player : SKSpriteNode {
             textures.append(SKTexture(imageNamed: "monkey\(i)"))
         }
         
-        physicsBody = SKPhysicsBody(circleOfRadius: 50)
+        physicsBody = SKPhysicsBody(circleOfRadius: 25)
         physicsBody!.categoryBitMask = PhysicsCategory.Player
         physicsBody!.contactTestBitMask = PhysicsCategory.Trap | PhysicsCategory.Totem
         physicsBody!.collisionBitMask = PhysicsCategory.none
