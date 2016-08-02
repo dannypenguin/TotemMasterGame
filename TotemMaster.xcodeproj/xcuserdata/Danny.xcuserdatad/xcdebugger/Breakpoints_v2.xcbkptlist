@@ -39,77 +39,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TotemMaster/GameSceneCamera.swift"
-            timestampString = "491788479.794493"
+            filePath = "TotemMaster/GameViewController.swift"
+            timestampString = "491853208.58172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
-            landmarkName = "makeTrapForTotem(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TotemMaster.GameSceneCamera.makeTrapForTotem (TotemMaster.Totem) -&gt; ()"
-                  moduleName = "TotemMaster"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Danny/Desktop/Make%20School%20Projects/TotemMaster/TotemMaster/GameSceneCamera.swift"
-                  timestampString = "491788066.352595"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "339"
-                  endingLineNumber = "339"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "dynamic TotemMaster.GameSceneCamera.makeTrapForTotem (TotemMaster.Totem) -&gt; ()"
-                  moduleName = "TotemMaster"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Danny/Desktop/Make%20School%20Projects/TotemMaster/TotemMaster/GameSceneCamera.swift"
-                  timestampString = "491788066.352783"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "338"
-                  endingLineNumber = "338"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TotemMaster/GameSceneCamera.swift"
-            timestampString = "491788479.794493"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "removeTrap(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TotemMaster/GameSceneCamera.swift"
-            timestampString = "491788479.794493"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "updateTraps()"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "gameOver()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -5,6 +5,7 @@
 //  Created by Danny Peng on 7/28/16.
 //  Copyright © 2016 Danny Peng. All rights reserved.
 //
+// Bananas placate bossbut also account for score.
 
 import SpriteKit
 
@@ -17,17 +18,23 @@ struct PhysicsCategory {
 }
 
 protocol GameProtocol: class {
-    func cycleScene()
+    //func cycleScene()
+    func startGame()
+    func gameOver()
+    
 }
 
 
-class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
+class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate {
     var myCamera: SKCameraNode!
     var floor1: SKSpriteNode!
     var floor2: SKSpriteNode!
 
     var trapNode: SKNode!
     var trapDictionary = [Totem: Trap]()
+    
+    var reload = false
+    var controller : Controller!
     
     var makingFloor: [SKNode] = []
     //var floorHeight: CGFloat = 568
@@ -62,10 +69,9 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         }
     }
     
-    func setGameProtocol(pro: GameProtocol) {
-        self.gamepro = pro
+    func setController(controller : GameProtocol) {
+        self.gamepro = controller
     }
-   
     
     
     override func didMoveToView(view: SKView) {
@@ -191,7 +197,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
     }
     
     func isPlayerGone() -> Bool {
-        return false //isGone(masterDan)
+        return isGone(masterDan)
     
     }
     
@@ -236,7 +242,7 @@ class GameSceneCamera : SKScene, SKPhysicsContactDelegate, TotemDelegate {
         
         if isPlayerGone() || masterDan.isDead() {
             self.terminate()
-            gamepro.cycleScene()
+            gamepro.gameOver()
         }
         if !terminateScene {
             myCamera.position.x -= 2

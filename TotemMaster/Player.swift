@@ -11,7 +11,7 @@ import SpriteKit
 
 class Player : SKSpriteNode {
     
-    var health = 1
+    var health = 25
     
     init() {
         let texture = SKTexture(imageNamed: "monkey1")

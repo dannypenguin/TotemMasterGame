@@ -13,25 +13,45 @@ class GameViewController: UIViewController, GameProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        cycleScene()
+        openingScene()
+        
     }
     
-    func cycleScene() {
+    func openingScene() {
+        if let scene = OpeningScene(fileNamed: "OpeningScene") {
+            massageScene(scene)
+        }
+        
+    }
+    
+    func startGame() {
         if let scene = GameSceneCamera(fileNamed:"GameSceneCamera") {
-            // Configure the view.
-            scene.setGameProtocol(self)
-            
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
+            massageScene(scene)
+        }
+    }
+    
+    func massageScene(scene: SKScene) {
+        
+        let skView = self.view as! SKView
+        let ss = scene as! Scene
+        ss.setController(self)
+        
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .AspectFill
+        
+        skView.presentScene(scene)
+        
+    }
+    
+    func gameOver() {
+        if let scene = GameOverScene(fileNamed:"GameOverScene") {
+            massageScene(scene)
         }
     }
 
