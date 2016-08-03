@@ -131,6 +131,10 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         //masterDan.zRotation = CGFloat(-M_PI)
         masterDan.setScale(0.9)
         
+        //Handle Tap Gestures with the use of UIKit
+        
+        let fireBanana = UITapGestureRecognizer(target: self, action: #selector(GameSceneCamera.onTap(_:)))
+        
         
         //Handles Swipe Gestures with the use of UIKit
         let swipeRight = UISwipeGestureRecognizer(target: self, action:#selector(GameSceneCamera.onSwipe(_:)))
@@ -148,6 +152,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         view.addGestureRecognizer(swipeLeft)
         view.addGestureRecognizer(swipeUp)
         view.addGestureRecognizer(swipeDown)
+        
+        view.addGestureRecognizer(fireBanana)
 
     }
     
@@ -175,7 +181,34 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         totem.setScale(0.9)
         totem.delegate = self
         return totem
-
+    }
+    
+    func onTap(gesture: UITapGestureRecognizer) {
+        print("Tap")
+        fireBanana()
+    }
+    
+    func getTotemAtPlayer() -> Totem {
+        return self.totemMaster[Int(characterY)]
+    }
+    
+    func fireBanana() {
+        if  gamepro.getScore() > 0 {
+            var bananagun = BananaShot()
+            self.addChild(bananagun)
+            bananagun.position = masterDan.position
+            bananagun.zPosition = masterDan.zPosition - 0.1
+            let totem = getTotemAtPlayer()
+            let totempos = self.convertPoint(totem.position, fromNode: totem.parent!)
+            var moveBanana = SKAction.moveTo(totempos, duration: 2)
+            let placateBoss = SKAction.runBlock({ 
+                totem.placate()
+            })
+            
+            let removeBanana = SKAction.removeFromParent()
+            let sequence = SKAction.sequence([moveBanana,placateBoss, removeBanana])
+            bananagun.runAction(sequence)
+        }
     }
     
     func onSwipe(gesture: UISwipeGestureRecognizer) {
@@ -298,8 +331,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        let t = totemMaster[Int(characterY)]
-        t.placate()
+        //let t = totemMaster[Int(characterY)]
+        //t.placate()
     }
 }
 

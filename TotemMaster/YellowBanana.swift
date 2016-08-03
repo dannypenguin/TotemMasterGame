@@ -11,7 +11,7 @@ import SpriteKit
 class YellowBanana : Trap {
     
     init() {
-        let texture = SKTexture(imageNamed: "banana")
+        let texture = SKTexture(imageNamed: "BananaOnLine-crop")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         name = "trap"
         
