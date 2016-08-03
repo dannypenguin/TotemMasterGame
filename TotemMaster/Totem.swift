@@ -83,29 +83,16 @@ class Totem : SKSpriteNode {
     }
     
     func timerCallBack() {
-        
         cycleTotem()
-        if anger < 2 {
+        
+        if !shouldAttack() {
             anger += 1
-         
         }
+
     }
     
     func shouldAttack() -> Bool{
-        if anger == 0 {
-            return false
-        }
-        else if anger > 0 && anger < 1 {
-            return false
-        }
-        else if anger == 2 {
-            return true
-        }
-        return false
+        return anger == 2
     }
-    
-    
-
-    
 }
     

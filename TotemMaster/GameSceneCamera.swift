@@ -200,7 +200,9 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             bananagun.zPosition = masterDan.zPosition - 0.1
             let totem = getTotemAtPlayer()
             let totempos = self.convertPoint(totem.position, fromNode: totem.parent!)
-            var moveBanana = SKAction.moveTo(totempos, duration: 2)
+            var moveBanana = SKAction.moveByX(-view!.frame.width, y: 0, duration: 0.3)
+            
+            //var moveBanana = SKAction.moveTo(totempos, duration: 0.5)
             let placateBoss = SKAction.runBlock({ 
                 totem.placate()
             })
@@ -263,7 +265,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         let nodePosition = node.position
         let cameraPosition = myCamera.position
         let width = frame.width
-        let edge = cameraPosition.x + width/2.0
+        let edge = cameraPosition.x + width * 0.6
         
         return nodePosition.x > edge
         
@@ -278,6 +280,11 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         }
         for j in holdDictionary {
             removeTrap(j)
+        }
+        
+        let totempicker = totemMaster[random() % totemMaster.count]
+        if totempicker.shouldAttack() {
+            makeTrapForTotem(totempicker, powerup: false)
         }
     }
     
@@ -305,7 +312,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         let now = NSDate().timeIntervalSince1970
         if now > nextBanana {
             let totem = totemMaster[random() % totemMaster.count]
-            if totem.anger < 2 {
+            if totem.anger <= 2 {
                 self.makeTrapForTotem(totem, powerup: true)
                 nextBanana = now + Double((arc4random() % 20))/10.0
             }
@@ -325,6 +332,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             updateTraps()
             updateBananas()
         }
+        
     
     }
     
