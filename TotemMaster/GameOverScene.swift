@@ -12,9 +12,11 @@ class GameOverScene : SKScene, Scene {
     
     var controller : GameProtocol!
     
+    
     func setController(controller: GameProtocol) {
         self.controller = controller
     }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         controller.startGame()
     }

@@ -24,7 +24,10 @@ class SkyTimer: SKSpriteNode {
 
         let animate = SKAction.animateWithTextures(textures, timePerFrame: 6)
         let animateForever = SKAction.repeatActionForever(animate)
+        
         runAction(animateForever)
+        
+       
     
     }
     

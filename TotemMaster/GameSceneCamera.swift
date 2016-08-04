@@ -31,7 +31,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
 
     var trapNode: SKNode!
     var trapDictionary = [Totem: Trap]()
-    var playerTitle: String = "Monkey's Uncle"
+    var disarm: CGFloat = 0.0
+    var trap:Trap?
     
     var reload = false
     var controller : Controller!
@@ -46,7 +47,6 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     let cameraspeed: CGFloat = 2.0
     let cameraFactor: CGFloat = 100.0
     
-    var playerExp: Int = 0
     
     static let totalTimeRound = 60
     var timeCount: SKLabelNode!
@@ -57,6 +57,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var masterDan = Player()
     var sky = SkyTimer()
     var firedBanana = false
+    
     
     
     var characterY: CGFloat = 1 {
@@ -165,57 +166,6 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         return self.currentTime == 0
     }
     
-    func setPlayerEXP(exp: Int){
-        let boostExp = gamepro.getScore()
-        if boostExp > 20 {
-            self.playerExp = boostExp * 2
-        }
-    }
-    
-    func getPlayerTitle() -> Int {
-        let temp = gamepro.getScore()
-        var temp2 = 0
-        if temp <= 20 {
-            temp2 = 0
-        } else if temp > 20 && temp <= 30 {
-            temp2 = 1
-        } else if temp > 30 && temp <= 40 {
-            temp2 = 2
-        } else if temp > 40 && temp <= 50 {
-            temp2 = 3
-        }
-        return temp2
-        
-    }
-    
-    func setPlayerTitle() {
-        var playerLevel = setPlayerEXP(playerExp)
-        let score = gamepro.getScore()
-        switch score {
-        case 0:
-           self.playerTitle = "Monkey's Uncle"
-        case 1:
-            self.playerTitle = "Monkey Scrapper"
-        case 2:
-            self.playerTitle = "Monkey Collector"
-        case 3:
-            self.playerTitle = "Monkey Gatherer"
-        case 4:
-            self.playerTitle = "Monkey Trainer"
-        case 5:
-            self.playerTitle = "Monkey Mogul"
-        case 6:
-            self.playerTitle = "Monkey Maniac"
-        case 7:
-            self.playerTitle = "Monkey Master"
-        case 8:
-            self.playerTitle = "Monkey GrandMaster"
-        default:
-            self.playerTitle = "Error Loading Monkey Title"
-        }
-    }
-    
-    
     func createsTotem(ypos: CGFloat) -> Totem {
         let totem = Totem()
         
@@ -240,22 +190,38 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     }
     
     func fireBanana() {
+        var bananaPoint: CGPoint?
+        var offset: CGFloat = frame.width
+        var removeTrapAction: SKAction?
         if  gamepro.getScore() > 0 {
+            let totem = getTotemAtPlayer()
+            if let trap = trapDictionary[totem] {
+                if trap.position.x < masterDan.position.x {
+                    removeTrapAction = SKAction.runBlock({ 
+                        self.removeTrap(trap)
+                    })
+                    bananaPoint = trap.position
+                    offset = masterDan.position.x - trap.position.x
+                }
+            }
             let bananagun = BananaShot()
             self.addChild(bananagun)
             bananagun.position = masterDan.position
             bananagun.zPosition = masterDan.zPosition - 0.1
-            let totem = getTotemAtPlayer()
-            let totempos = self.convertPoint(totem.position, fromNode: totem.parent!)
-            let moveBanana = SKAction.moveByX(-view!.frame.width, y: 0, duration: 0.5)
+            //let totempos = bananaPoint ?? self.convertPoint(totem.position, fromNode: totem.parent!)
+            let moveBanana = SKAction.moveByX(-offset, y: 0, duration: Double(offset/frame.width) * 0.5)
             firedBanana = true
             updateScore(1)
-            let placateBoss = SKAction.runBlock({ 
+            
+            
+            let placateBoss = SKAction.runBlock({
                 totem.placate()
             })
+            //decide whether or not to placate boss or remove the trap
             
             let removeBanana = SKAction.removeFromParent()
-            let sequence = SKAction.sequence([moveBanana,placateBoss, removeBanana])
+            
+            let sequence = SKAction.sequence([moveBanana,removeTrapAction ?? placateBoss, removeBanana])
             bananagun.runAction(sequence)
         }
     }
@@ -467,7 +433,7 @@ extension GameSceneCamera {
     }
     
     func makeTrapForTotem(totem: Totem, powerup: Bool) {
-        var trap:Trap?
+        //var trap:Trap?
         //print("**** Make Trap for Delegate")
         if !powerup {
             if let _ = trapDictionary[totem] {
