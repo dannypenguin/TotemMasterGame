@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TotemMaster/GameSceneCamera.swift"
-            timestampString = "491984257.508588"
+            timestampString = "491988345.948269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "setPlayerTitle()"
             landmarkType = "5">
          </BreakpointContent>

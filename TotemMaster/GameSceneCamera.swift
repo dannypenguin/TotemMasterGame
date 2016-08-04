@@ -56,6 +56,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var totemMaster: [Totem] = []
     var masterDan = Player()
     var sky = SkyTimer()
+    var firedBanana = false
     
     
     var characterY: CGFloat = 1 {
@@ -247,6 +248,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             let totem = getTotemAtPlayer()
             let totempos = self.convertPoint(totem.position, fromNode: totem.parent!)
             let moveBanana = SKAction.moveByX(-view!.frame.width, y: 0, duration: 0.5)
+            firedBanana = true
+            updateScore(1)
             let placateBoss = SKAction.runBlock({ 
                 totem.placate()
             })
@@ -351,8 +354,15 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     }
     
     func updateScore(bonus: Int){
+        if firedBanana == false {
         let newScore = gamepro.incrementScore(bonus)
         scoreCount.text = String(newScore)
+        }
+        else {
+            let noScore = gamepro.setScoreGame(bonus)
+            scoreCount.text = String(noScore)
+            firedBanana = false
+        }
     }
     
     func updateBananas() {

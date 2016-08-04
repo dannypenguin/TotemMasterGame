@@ -63,8 +63,14 @@ class GameViewController: UIViewController, GameProtocol {
         return score
     }
     
+    
     func incrementScore(bonus: Int) -> Int {
         score += bonus
+        return score
+    }
+    
+    func setScoreGame(dec: Int) -> Int {
+        score -= dec
         return score
     }
 

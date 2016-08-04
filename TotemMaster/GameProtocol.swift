@@ -13,5 +13,6 @@ protocol GameProtocol: class {
     func gameOver()
     func getScore() -> Int
     func incrementScore(bonus: Int) -> Int
+    func setScoreGame(dec: Int) -> Int
     
 }
