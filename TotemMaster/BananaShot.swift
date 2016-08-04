@@ -14,11 +14,11 @@ class BananaShot: SKSpriteNode {
     
     init() {
         
-        let texture = SKTexture(imageNamed: "BananaGun1")
+        let texture = SKTexture(imageNamed: "bananagun1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         var textures = [SKTexture]()
         for i in 1...2 {
-            textures.append(SKTexture(imageNamed: "BananaGun\(i)"))
+            textures.append(SKTexture(imageNamed: "bananagun\(i)"))
         }
         
         //physicsBody = SKPhysicsBody(circleOfRadius: 25)

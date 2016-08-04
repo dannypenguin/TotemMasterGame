@@ -23,7 +23,6 @@ class GameViewController: UIViewController, GameProtocol {
         if let scene = OpeningScene(fileNamed: "OpeningScene") {
             massageScene(scene)
         }
-        
     }
     
     func startGame() {

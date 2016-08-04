@@ -13,14 +13,12 @@ protocol TotemDelegate: class {
 }
 
 enum TotemColor: String {
-    case Red = "cowTotem3",
-         Green = "cowTotem2",
-         Black = "cowTotem1"
+    case Red = "Gorilla1",
+         Green = "Gorilla2",
+         Black = "Gorilla3"
 }
 
 class Totem : SKSpriteNode {
-    //var totemColor: TotemColor = .Black
-    //var sureFire:Bool = false
     var anger: Int = -1 {
         didSet{
             if !terminated {
@@ -41,9 +39,9 @@ class Totem : SKSpriteNode {
     
     init() {
         
-        let texture1 = SKTexture(imageNamed: "cowTotem1")
-        let texture2 = SKTexture(imageNamed: "cowTotem2")
-        let texture3 = SKTexture(imageNamed: "cowTotem3")
+        let texture1 = SKTexture(imageNamed: "Gorilla3")
+        let texture2 = SKTexture(imageNamed: "Gorilla2")
+        let texture3 = SKTexture(imageNamed: "Gorilla1")
         textures = [texture1, texture2, texture3]
         
         super.init(texture: texture1, color: UIColor.clearColor(), size: texture1.size())
