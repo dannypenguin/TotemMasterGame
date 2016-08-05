@@ -14,6 +14,7 @@ class YellowBanana : Trap {
         let texture = SKTexture(imageNamed: "bananaOnLine")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         name = "trap"
+        zPosition = 2
         
         physicsBody = SKPhysicsBody(circleOfRadius: 25)
         physicsBody!.categoryBitMask = PhysicsCategory.Trap

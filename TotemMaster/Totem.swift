@@ -47,6 +47,7 @@ class Totem : SKSpriteNode {
         super.init(texture: texture1, color: UIColor.clearColor(), size: texture1.size())
         cycleTotem()
         anger = 0
+        zPosition = 5
         
         physicsBody = SKPhysicsBody(circleOfRadius: 25)
         physicsBody!.categoryBitMask = PhysicsCategory.Totem

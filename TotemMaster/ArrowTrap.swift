@@ -23,6 +23,8 @@ class ArrowTrap : Trap {
         physicsBody!.collisionBitMask = PhysicsCategory.none
         physicsBody!.dynamic = false
         
+        zPosition = 1
+        
         arrowWoosh = SKEmitterNode(fileNamed: "ArrowWoosh")!
         arrowWoosh.targetNode = parent
         addChild(arrowWoosh)

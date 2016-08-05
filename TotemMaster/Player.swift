@@ -30,7 +30,7 @@ class Player : SKSpriteNode {
         physicsBody!.collisionBitMask = PhysicsCategory.none
         physicsBody!.affectedByGravity = false
         physicsBody!.allowsRotation = false
-        
+        zPosition = 6
         let animate = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
         let animateForever = SKAction.repeatActionForever(animate)
         runAction(animateForever)

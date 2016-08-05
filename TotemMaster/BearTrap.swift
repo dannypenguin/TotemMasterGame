@@ -30,6 +30,7 @@ class BearTrap : Trap {
         physicsBody!.collisionBitMask = PhysicsCategory.none
         physicsBody!.dynamic = false
         
+        zPosition = 1
         let animate = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
         let animateForever = SKAction.repeatActionForever(animate)
         runAction(animateForever)

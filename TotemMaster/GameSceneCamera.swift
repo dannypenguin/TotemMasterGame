@@ -44,9 +44,11 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     
     var nextTrap: Double = 0.0
     var nextBanana: NSTimeInterval = 0
-    let cameraspeed: CGFloat = 2.0
-    let cameraFactor: CGFloat = 100.0
-    
+    let cameraspeed: CGFloat = 2.5
+    let cameraFactor: CGFloat = 500.0
+    var gameDistance:CGFloat = 0
+    var accelerateGame:CGFloat = 100
+    var gameOffset: CGFloat = 1000
     
     static let totalTimeRound = 60
     var timeCount: SKLabelNode!
@@ -55,7 +57,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     
     var totemMaster: [Totem] = []
     var masterDan = Player()
-    var sky = SkyTimer()
+    var sky: SkyTimer!
     var firedBanana = false
     
     
@@ -78,6 +80,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     
     
     override func didMoveToView(view: SKView) {
+        
+        
         
         floor1 = self.childNodeWithName("floor1") as! SKSpriteNode
         floor2 = self.childNodeWithName("floor2") as! SKSpriteNode
@@ -106,10 +110,18 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         myCamera = self.childNodeWithName("camera") as! SKCameraNode
         camera = myCamera
         
+        
+        var skies = [String]()
+        for i in 1...10 {
+            skies.append("Sky\(i)")
+        }
+        sky = SkyTimer(textures: skies)
+        sky.position.x = 0
+        sky.position.y = 0
         myCamera.addChild(sky)
-        sky.zPosition = -1
-        sky.anchorPoint.x = 0.5
-        sky.anchorPoint.y = 0.5
+        
+        
+        sky.startFade()
         
 
         
@@ -225,8 +237,6 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             bananagun.runAction(sequence)
         }
     }
-
-
     
     
     func onSwipe(gesture: UISwipeGestureRecognizer) {
@@ -256,6 +266,10 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         let x = 142 * characterX + 71
         let moveAction  = SKAction.moveTo(CGPoint(x: x, y: y), duration: 0.2)
         masterDan.runAction(moveAction)
+        let newDistance = view!.frame.width/2 - masterDan.position.x
+        if newDistance > gameDistance {
+            gameDistance = newDistance
+        }
         
     }
 
@@ -352,7 +366,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             gamepro.gameOver()
         }
         if !terminateScene {
-            let dx: CGFloat = CGFloat(gamepro.getScore()) / self.cameraFactor + cameraspeed
+            let dx: CGFloat = CGFloat(pow(gameDistance, 0.5)) / self.cameraFactor + cameraspeed
             myCamera.position.x -= dx
             scrollSceneNodes()
             updateTraps()

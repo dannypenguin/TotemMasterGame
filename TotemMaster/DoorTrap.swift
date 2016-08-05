@@ -21,7 +21,7 @@ class DoorTrap : Trap {
          for i in 1...4 {
          textures.append(SKTexture(imageNamed: "trapDoor\(i)"))
          }
-        
+        zPosition = 1
         physicsBody = SKPhysicsBody(circleOfRadius: 25)
         physicsBody!.categoryBitMask = PhysicsCategory.Trap
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
