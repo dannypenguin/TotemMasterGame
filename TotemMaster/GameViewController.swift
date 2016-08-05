@@ -14,6 +14,7 @@ class GameViewController: UIViewController, GameProtocol {
     var score: Int = 0
     var playerTitle: String = "Monkey's Uncle"
     var playerExp: Int = 0
+    var gameDis: CGFloat = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class GameViewController: UIViewController, GameProtocol {
             massageScene(scene)
             
         }
+    }
+    
+    func setGameDistance(dis: CGFloat) {
+        self.gameDis = dis
     }
     
     func massageScene(scene: SKScene) {
@@ -72,7 +77,19 @@ class GameViewController: UIViewController, GameProtocol {
             temp2 = 2
         } else if temp >= 40 && temp < 50 {
             temp2 = 3
+        } else if temp >= 50 && temp < 60 {
+            temp2 = 4
+        } else if temp >= 70 && temp < 80 {
+            temp2 = 5
+        } else if temp >= 90 && temp < 100 {
+            temp2 = 6
+        } else if temp >= 100 && temp < 400 {
+            temp2 = 7
+        } else if temp >= 400 && temp < 800 {
+            temp2 = 8
         }
+        
+        
         return temp2
         
     }
@@ -110,6 +127,13 @@ class GameViewController: UIViewController, GameProtocol {
             monkeyTitle = scene.childNodeWithName("monkeyTitle") as! SKLabelNode
             setPlayerTitle()
             monkeyTitle.text = playerTitle
+            var gameDistanceLabel: SKLabelNode!
+            gameDistanceLabel = scene.childNodeWithName("gameDistance") as! SKLabelNode
+            var retrieveDis = self.gameDis
+            var calculateDis = retrieveDis/60
+            gameDistanceLabel.text = "Distance: \(Int(calculateDis)) Banana Feet "
+            
+            
             
             
         }

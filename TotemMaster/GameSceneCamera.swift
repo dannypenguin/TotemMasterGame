@@ -197,6 +197,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         fireBanana()
     }
     
+    
     func getTotemAtPlayer() -> Totem {
         return self.totemMaster[Int(characterY)]
     }
@@ -269,6 +270,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         let newDistance = view!.frame.width/2 - masterDan.position.x
         if newDistance > gameDistance {
             gameDistance = newDistance
+            gamepro.setGameDistance(gameDistance)
         }
         
     }

@@ -8,19 +8,7 @@
 
 import SpriteKit
 import UIKit
-/*
-// This struct holds all physics categories
-// Using a struct like this allows you to give each category a name.
-// These physics categoriesa are also used to generate collisions
-// and contacts in an easy and intuitive way, see comments below.
-struct PhysicsCategory {
-    static let None:    UInt32 = 0          // 00000
-    static let Lose:  UInt32 = 0b1        // 00001
-    static let Black:   UInt32 = 0b10       // 00010
-    static let Coin:    UInt32 = 0b100      // 00100
-    static let Floor:   UInt32 = 0b1000     // 01000
-    static let PowerUp: UInt32 = 0b10000    // 10000
-} */
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var frameThird: CGFloat!
@@ -52,9 +40,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var totemBack = Totem()
     
     
-    
-    
-    //var fireTrapStatus = fireTrap.setTrapState(Trapstate.Benign)
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */

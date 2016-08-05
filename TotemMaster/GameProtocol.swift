@@ -6,7 +6,7 @@
 //  Copyright © 2016 Danny Peng. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 protocol GameProtocol: class {
     func startGame()
@@ -14,5 +14,6 @@ protocol GameProtocol: class {
     func getScore() -> Int
     func incrementScore(bonus: Int) -> Int
     func setScoreGame(dec: Int) -> Int
+    func setGameDistance(dis: CGFloat)
     
 }
