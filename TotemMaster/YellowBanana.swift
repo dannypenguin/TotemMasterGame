@@ -16,7 +16,7 @@ class YellowBanana : Trap {
         name = "trap"
         zPosition = 2
         
-        physicsBody = SKPhysicsBody(circleOfRadius: 25)
+        physicsBody = SKPhysicsBody(circleOfRadius: 40)
         physicsBody!.categoryBitMask = PhysicsCategory.Trap
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.none

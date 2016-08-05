@@ -126,11 +126,11 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
 
         
         physicsWorld.contactDelegate = self
-        var totemy: CGFloat = -112
+        var totemy: CGFloat = -116
         let totemfront = createsTotem(totemy)
-        totemy+=102
+        totemy+=106
         let totemcenter = createsTotem(totemy)
-        totemy+=102
+        totemy+=106
         let totemback = createsTotem(totemy)
         
         
@@ -188,7 +188,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         totem.zPosition = 50
         totem.anchorPoint.x = 0.5
         totem.anchorPoint.y = 0.5
-        totem.setScale(0.9)
+        totem.setScale(0.8)
         totem.delegate = self
         return totem
     }
@@ -353,7 +353,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             let totem = totemMaster[random() % totemMaster.count]
             if totem.anger <= 2 {
                 self.makeTrapForTotem(totem, powerup: true)
-                nextBanana = now + Double((arc4random() % 20))/10.0
+                nextBanana = now + Double((arc4random() % 2)) + 1
             }
         }
         

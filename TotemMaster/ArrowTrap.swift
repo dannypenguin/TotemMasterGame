@@ -17,7 +17,7 @@ class ArrowTrap : Trap {
         let texture = SKTexture(imageNamed: "arrowTrap")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
-        physicsBody = SKPhysicsBody(circleOfRadius: 25)
+        physicsBody = SKPhysicsBody(circleOfRadius: 20)
         physicsBody!.categoryBitMask = PhysicsCategory.Trap
         physicsBody!.contactTestBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.none
