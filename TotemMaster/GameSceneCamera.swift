@@ -45,7 +45,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var nextTrap: Double = 0.0
     var nextBanana: NSTimeInterval = 0
     let cameraspeed: CGFloat = 2.5
-    let cameraFactor: CGFloat = 500.0
+    let cameraFactor: CGFloat = 75.0
     var gameDistance:CGFloat = 0
     var accelerateGame:CGFloat = 100
     var gameOffset: CGFloat = 1000
@@ -94,7 +94,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         
         let now = NSDate().timeIntervalSince1970
         gameOverTime = now + Double(GameSceneCamera.totalTimeRound)
-        updateTime()
+        //updateTime()
+        timeCount.text = String(Int(gameDistance/60))
         
         updateScore(0)
         
@@ -168,7 +169,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         view.addGestureRecognizer(fireBanana)
     }
     
-    func updateTime() -> Bool{
+   /* func updateTime() -> Bool{
         let now = NSDate().timeIntervalSince1970
         let temp = Int(gameOverTime - now)
         if temp != self.currentTime {
@@ -176,7 +177,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             self.currentTime = temp
         }
         return self.currentTime == 0
-    }
+    } */
+    
     
     func createsTotem(ypos: CGFloat) -> Totem {
         let totem = Totem()
@@ -241,14 +243,14 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     
     
     func onSwipe(gesture: UISwipeGestureRecognizer) {
-        
+        characterX = 0
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.Left:
             print("Move Left")
-            characterX -= 1
+            characterX = -1
         case UISwipeGestureRecognizerDirection.Right:
             print("Move Right")
-            characterX += 1
+            characterX = 1
         case UISwipeGestureRecognizerDirection.Up:
             print("Move Up")
             characterY += 1
@@ -264,9 +266,18 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     
     func moveCharacter() {
         let y = 58 + characterY * 102
-        let x = 142 * characterX + 71
+        var x = 142 * characterX + masterDan.position.x
+        
+        //if x < myCamera.position
+        print(x,characterX, myCamera.position.x)
+        if x < myCamera.position.x - frame.width * 0.35 {
+            x = myCamera.position.x - frame.width * 0.35
+        }
+        
         let moveAction  = SKAction.moveTo(CGPoint(x: x, y: y), duration: 0.2)
-        masterDan.runAction(moveAction)
+        //masterDan.removeActionForKey("move")
+        masterDan.runAction(moveAction)//, withKey: "move")
+        
         let newDistance = view!.frame.width/2 - masterDan.position.x
         if newDistance > gameDistance {
             gameDistance = newDistance
@@ -363,7 +374,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
 
     override func update(currentTime: NSTimeInterval) {
         
-        if updateTime() || isPlayerGone() || masterDan.isDead() {
+        if /* updateTime() || */ isPlayerGone() || masterDan.isDead() {
             self.terminate()
             gamepro.gameOver()
         }
@@ -373,6 +384,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             scrollSceneNodes()
             updateTraps()
             updateBananas()
+            let monkeyFeet = String(Int(gameDistance/60))
+            timeCount.text = "Feet:\(monkeyFeet)"
             
         }
     }

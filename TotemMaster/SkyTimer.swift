@@ -43,7 +43,7 @@ class SkyTimer: SKNode {
     }
     
     func startFade() {
-        let fadeOut = SKAction.fadeOutWithDuration(2)
+        let fadeOut = SKAction.fadeOutWithDuration(5)
         let block = SKAction.runBlock {
             self.textureIndex += 1
             

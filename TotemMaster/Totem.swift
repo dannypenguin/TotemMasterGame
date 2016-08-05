@@ -77,7 +77,7 @@ class Totem : SKSpriteNode {
     
     func placate() {
         if anger > 0 {
-            anger -= 1
+            anger = 0
         }
     }
     
