@@ -46,15 +46,15 @@ class GameViewController: UIViewController, GameProtocol {
         let ss = scene as! Scene
         ss.setController(self)
         
-        skView.showsFPS = false
-        skView.showsNodeCount = false
+        skView.showsFPS = true
+        skView.showsNodeCount = true
         skView.showsPhysics = false
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .Fill
         
         skView.presentScene(scene)
         

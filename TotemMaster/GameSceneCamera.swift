@@ -371,8 +371,16 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     }
     
 
-
+    var lastUpdateTime: NSTimeInterval = 0
+    
     override func update(currentTime: NSTimeInterval) {
+        
+        var deltaTime: CFTimeInterval = currentTime - lastUpdateTime
+        lastUpdateTime = currentTime
+        if deltaTime > 1 {
+            deltaTime = 1 / 60
+            lastUpdateTime = currentTime
+        }
         
         if /* updateTime() || */ isPlayerGone() || masterDan.isDead() {
             self.terminate()
@@ -380,7 +388,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         }
         if !terminateScene {
             let dx: CGFloat = CGFloat(pow(gameDistance, 0.5)) / self.cameraFactor + cameraspeed
-            myCamera.position.x -= dx
+            
+            myCamera.position.x -= dx * 60 * CGFloat(deltaTime)
             scrollSceneNodes()
             updateTraps()
             updateBananas()
