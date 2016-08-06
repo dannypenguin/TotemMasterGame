@@ -21,12 +21,6 @@ class BananaShot: SKSpriteNode {
             textures.append(SKTexture(imageNamed: "bananagun\(i)"))
         }
         
-        //physicsBody = SKPhysicsBody(circleOfRadius: 25)
-        //physicsBody!.categoryBitMask = PhysicsCategory.Trap
-        //physicsBody!.contactTestBitMask = PhysicsCategory.Totem
-        //physicsBody!.collisionBitMask = PhysicsCategory.none
-        //physicsBody!.dynamic = false
-        
         let animate = SKAction.animateWithTextures(textures, timePerFrame: 0.2)
         let animateForever = SKAction.repeatActionForever(animate)
         runAction(animateForever)

@@ -414,7 +414,7 @@ extension GameSceneCamera {
     func scrollSceneNodes() {
         for node in makingFloor {
             let x = node.position.x - myCamera.position.x
-            if x > view!.frame.width {
+            if x > scene!.size.width /*view!.frame.width*/ {
                 node.position.x -= floorWidth * 2
             }
         }
