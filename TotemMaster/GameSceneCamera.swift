@@ -60,6 +60,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     var sky: SkyTimer!
     var firedBanana = false
     
+    var pauseButton = ToggleButton(selectedName: "PauseButton", unselectedName: "ResumeButton")
+    
     
     
     var characterY: CGFloat = 1 {
@@ -91,6 +93,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         lifeBarFront = self.childNodeWithName("//lifeBarFront") as! SKSpriteNode
         
         timeCount = self.childNodeWithName("//timeCount") as! SKLabelNode
+    
         
         let now = NSDate().timeIntervalSince1970
         gameOverTime = now + Double(GameSceneCamera.totalTimeRound)
@@ -110,6 +113,28 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         
         myCamera = self.childNodeWithName("camera") as! SKCameraNode
         camera = myCamera
+        
+        myCamera.addChild(pauseButton)
+        pauseButton.zPosition = 5
+        pauseButton.position.x = 90
+        pauseButton.position.y = 130
+        pauseButton.setScale(0.8)
+        pauseButton.selectedHandler = {
+            //TODO: Pause Game Here
+            print("should be pausing game...")
+            var wait = SKAction.waitForDuration(0.05)
+            var pause = SKAction.runBlock({ 
+                self.scene!.paused = true
+            })
+            var sequence = SKAction.sequence([wait, pause])
+            self.runAction(sequence)
+        }
+        pauseButton.unselectedHandler = {
+            //TODO: Resume Game Here
+            print("should be resuming game...")
+            self.scene!.paused = false
+        }
+
         
         
         var skies = [String]()
@@ -278,7 +303,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         //masterDan.removeActionForKey("move")
         masterDan.runAction(moveAction)//, withKey: "move")
         
-        let newDistance = view!.frame.width/2 - masterDan.position.x
+        let newDistance = scene!.frame.width/2 - masterDan.position.x
         if newDistance > gameDistance {
             gameDistance = newDistance
             gamepro.setGameDistance(gameDistance)
@@ -394,7 +419,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             updateTraps()
             updateBananas()
             let monkeyFeet = String(Int(gameDistance/60))
-            timeCount.text = "Feet:\(monkeyFeet)"
+            timeCount.text = "\(monkeyFeet)"
             
         }
     }

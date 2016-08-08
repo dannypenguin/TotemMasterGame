@@ -11,6 +11,7 @@
 		30104CD31D38188300A8B548 /* FireTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30104CD21D38188300A8B548 /* FireTrap.swift */; };
 		30104CD71D38360600A8B548 /* BearTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30104CD61D38360600A8B548 /* BearTrap.sks */; };
 		30117D5F1D530D4500FB1EF7 /* SkyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30117D5E1D530D4500FB1EF7 /* SkyTimer.swift */; };
+		3016B1731D5920C000F8D415 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3016B1721D5920C000F8D415 /* ToggleButton.swift */; };
 		306AA2591D5264C6005F86F3 /* BananaShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306AA2581D5264C6005F86F3 /* BananaShot.swift */; };
 		306AF21D1D3D48600080FDA8 /* FireTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF21C1D3D48600080FDA8 /* FireTrap.sks */; };
 		306AF2211D3D4E270080FDA8 /* SimpleFireTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF2201D3D4E270080FDA8 /* SimpleFireTrap.sks */; };
@@ -66,6 +67,7 @@
 		30104CD21D38188300A8B548 /* FireTrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireTrap.swift; sourceTree = "<group>"; };
 		30104CD61D38360600A8B548 /* BearTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BearTrap.sks; sourceTree = "<group>"; };
 		30117D5E1D530D4500FB1EF7 /* SkyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyTimer.swift; sourceTree = "<group>"; };
+		3016B1721D5920C000F8D415 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		306AA2581D5264C6005F86F3 /* BananaShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaShot.swift; sourceTree = "<group>"; };
 		306AF21C1D3D48600080FDA8 /* FireTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireTrap.sks; sourceTree = "<group>"; };
 		306AF2201D3D4E270080FDA8 /* SimpleFireTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SimpleFireTrap.sks; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				30B59A9F1D356F7B00703245 /* AppDelegate.swift */,
 				30B74B231D4A8631007F34EB /* GameSceneCamera.sks */,
+				3016B1721D5920C000F8D415 /* ToggleButton.swift */,
 				30B74B211D4A8607007F34EB /* GameSceneCamera.swift */,
 				30B59AA51D356F7B00703245 /* GameViewController.swift */,
 				30CE07C91D51182C00AC4B13 /* GameProtocol.swift */,
@@ -285,7 +288,7 @@
 				TargetAttributes = {
 					30B59A9B1D356F7B00703245 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = VASR9RY275;
+						DevelopmentTeam = 8297PCJG83;
 					};
 					30B59AB31D356F7B00703245 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -363,6 +366,7 @@
 			files = (
 				30CE07C61D5108D000AC4B13 /* Controller.swift in Sources */,
 				30CE07C41D51089900AC4B13 /* ScenePro.swift in Sources */,
+				3016B1731D5920C000F8D415 /* ToggleButton.swift in Sources */,
 				306AA2591D5264C6005F86F3 /* BananaShot.swift in Sources */,
 				30EAD7181D4FC37600C08673 /* YellowBanana.swift in Sources */,
 				30CD9FAA1D4293DF00B09B95 /* DoorTrap.swift in Sources */,
@@ -524,7 +528,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TotemMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MakeSchool.TotemMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = DannyPeng.TotemMaster;
 				PRODUCT_NAME = MonkeyGatherer;
 				PROVISIONING_PROFILE = "";
 			};
@@ -538,7 +542,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TotemMaster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MakeSchool.TotemMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = DannyPeng.TotemMaster;
 				PRODUCT_NAME = MonkeyGatherer;
 				PROVISIONING_PROFILE = "";
 			};
