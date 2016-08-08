@@ -69,6 +69,18 @@ class Totem : SKSpriteNode {
         timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: #selector(timerCallBack), userInfo: nil, repeats: false)
     }
     
+    /*func generatePos(pos: CGFloat) -> CGFloat {
+        var offset = -scene!.size.height/4
+        if pos < offset {
+            return offset
+        } else if pos > offset && pos < +offset {
+            offset = scene!.size.height/2
+            return offset
+        } else {
+            return offset = scene!.size.height/
+        }
+    }*/
+    
     func terminate() {
         if let timer = timer {
             timer.invalidate()

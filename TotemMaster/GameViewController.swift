@@ -19,7 +19,6 @@ class GameViewController: UIViewController, GameProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         openingScene()
-        
     }
     
     func openingScene() {
@@ -46,8 +45,8 @@ class GameViewController: UIViewController, GameProtocol {
         let ss = scene as! Scene
         ss.setController(self)
         
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         skView.showsPhysics = false
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
@@ -129,8 +128,8 @@ class GameViewController: UIViewController, GameProtocol {
             monkeyTitle.text = "Rank: \(playerTitle)"
             var gameDistanceLabel: SKLabelNode!
             gameDistanceLabel = scene.childNodeWithName("gameDistance") as! SKLabelNode
-            var retrieveDis = self.gameDis
-            var calculateDis = retrieveDis/60
+            let retrieveDis = self.gameDis
+            let calculateDis = retrieveDis/60
             gameDistanceLabel.text = "Distance: \(Int(calculateDis)) Banana Feet"
             
             

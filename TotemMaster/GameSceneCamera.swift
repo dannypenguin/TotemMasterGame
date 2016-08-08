@@ -81,7 +81,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     
     override func didMoveToView(view: SKView) {
         
-        
+        gamepro.setGameDistance(0)
         
         floor1 = self.childNodeWithName("floor1") as! SKSpriteNode
         floor2 = self.childNodeWithName("floor2") as! SKSpriteNode
@@ -102,7 +102,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         
         trapNode = SKNode()
         addChild(trapNode)
-        trapNode.position.y = view.frame.height/2
+        trapNode.position.y = scene!.frame.height/2
         trapNode.zPosition = 25
         trapNode.position.x = 0
         
@@ -127,11 +127,11 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
 
         
         physicsWorld.contactDelegate = self
-        var totemy: CGFloat = -116
+        var totemy: CGFloat = (-scene!.size.height/3) - 10  //-116
         let totemfront = createsTotem(totemy)
-        totemy+=106
+        totemy+=scene!.size.height/3 //106
         let totemcenter = createsTotem(totemy)
-        totemy+=106
+        totemy+=scene!.size.height/3 //106
         let totemback = createsTotem(totemy)
         
         
@@ -185,7 +185,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         
         myCamera.addChild(totem)
         
-        totem.position.x = -190
+        totem.position.x = -scene!.size.width/3 //-190
         totem.position.y = ypos
         totem.zPosition = 50
         totem.anchorPoint.x = 0.5
@@ -471,8 +471,6 @@ extension GameSceneCamera {
     }
     
     func makeTrapForTotem(totem: Totem, powerup: Bool) {
-        //var trap:Trap?
-        //print("**** Make Trap for Delegate")
         if !powerup {
             if let _ = trapDictionary[totem] {
                 return
@@ -489,7 +487,10 @@ extension GameSceneCamera {
         }
         if let t = trap {
             t.position.x = totem.position.x + myCamera.position.x
+            //t.position.y = totem.generatePos(totem.position.y)
             t.position.y = totem.position.y
+            t.anchorPoint.x = 0.5
+            t.anchorPoint.y = 0.5
             trapNode.addChild(t)
         }
     }
