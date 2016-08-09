@@ -36,6 +36,8 @@
 		30C5B97F1D40440D0081AD11 /* Trap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C5B97E1D40440D0081AD11 /* Trap.swift */; };
 		30C7E7271D5A48E10007E7A4 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C7E7261D5A48E10007E7A4 /* TutorialScene.swift */; };
 		30C7E72B1D5A5EE20007E7A4 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30C7E72A1D5A5EE20007E7A4 /* TutorialScene.sks */; };
+		30C7E72D1D5A6E850007E7A4 /* GameLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C7E72C1D5A6E850007E7A4 /* GameLimbo.swift */; };
+		30C7E72F1D5A70490007E7A4 /* GameLimbo.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30C7E72E1D5A70490007E7A4 /* GameLimbo.sks */; };
 		30CD9FAA1D4293DF00B09B95 /* DoorTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */; };
 		30CD9FAC1D42963B00B09B95 /* Totem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CD9FAB1D42963B00B09B95 /* Totem.swift */; };
 		30CE07BE1D51030200AC4B13 /* OpeningScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30CE07BD1D51030200AC4B13 /* OpeningScene.sks */; };
@@ -101,6 +103,8 @@
 		30C5B97E1D40440D0081AD11 /* Trap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trap.swift; sourceTree = "<group>"; };
 		30C7E7261D5A48E10007E7A4 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		30C7E72A1D5A5EE20007E7A4 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
+		30C7E72C1D5A6E850007E7A4 /* GameLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLimbo.swift; sourceTree = "<group>"; };
+		30C7E72E1D5A70490007E7A4 /* GameLimbo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameLimbo.sks; sourceTree = "<group>"; };
 		30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorTrap.swift; sourceTree = "<group>"; };
 		30CD9FAB1D42963B00B09B95 /* Totem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Totem.swift; sourceTree = "<group>"; };
 		30CE07BD1D51030200AC4B13 /* OpeningScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OpeningScene.sks; sourceTree = "<group>"; };
@@ -188,8 +192,10 @@
 				30CE07C51D5108D000AC4B13 /* Controller.swift */,
 				30CE07BD1D51030200AC4B13 /* OpeningScene.sks */,
 				30CE07C71D51090000AC4B13 /* OpeningScene.swift */,
-				30C7E7261D5A48E10007E7A4 /* TutorialScene.swift */,
 				30C7E72A1D5A5EE20007E7A4 /* TutorialScene.sks */,
+				30C7E7261D5A48E10007E7A4 /* TutorialScene.swift */,
+				30C7E72E1D5A70490007E7A4 /* GameLimbo.sks */,
+				30C7E72C1D5A6E850007E7A4 /* GameLimbo.swift */,
 				30CE07BF1D5105C900AC4B13 /* GameOverScene.sks */,
 				30CE07C11D51085A00AC4B13 /* GameOverScene.swift */,
 				30117D5E1D530D4500FB1EF7 /* SkyTimer.swift */,
@@ -341,6 +347,7 @@
 				306AF21D1D3D48600080FDA8 /* FireTrap.sks in Resources */,
 				30104CD71D38360600A8B548 /* BearTrap.sks in Resources */,
 				30C5B97B1D3FF54B0081AD11 /* ArrowWoosh.sks in Resources */,
+				30C7E72F1D5A70490007E7A4 /* GameLimbo.sks in Resources */,
 				306AF2251D3D7E710080FDA8 /* Fire.sks in Resources */,
 				30CE07C01D5105C900AC4B13 /* GameOverScene.sks in Resources */,
 				306AF2281D3D7F5E0080FDA8 /* Spark.sks in Resources */,
@@ -375,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30CE07C61D5108D000AC4B13 /* Controller.swift in Sources */,
+				30C7E72D1D5A6E850007E7A4 /* GameLimbo.swift in Sources */,
 				30CE07C41D51089900AC4B13 /* ScenePro.swift in Sources */,
 				3016B1731D5920C000F8D415 /* ToggleButton.swift in Sources */,
 				306AA2591D5264C6005F86F3 /* BananaShot.swift in Sources */,
@@ -539,10 +547,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TotemMaster/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DannyPeng.TotemMaster;
 				PRODUCT_NAME = MonkeyGatherer;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -553,10 +563,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TotemMaster/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DannyPeng.TotemMaster;
 				PRODUCT_NAME = MonkeyGatherer;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

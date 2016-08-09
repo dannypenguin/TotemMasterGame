@@ -14,7 +14,10 @@ class OpeningScene : SKScene, Scene {
     var controller : GameProtocol!
     var playButton = ButtonNode(normalImageNamed: "PlayButton-1", activeImageNamed: "PlayButton-1", disabledImageNamed: "PlayButton-1")
     
-     var tutorialButton = ButtonNode(normalImageNamed: "Tutorial", activeImageNamed: "Tutorial", disabledImageNamed: "Tutorial")
+    var tutorialButton = ButtonNode(normalImageNamed: "Tutorial", activeImageNamed: "Tutorial", disabledImageNamed: "Tutorial")
+    
+    var highScoreButton = ButtonNode(normalImageNamed: "HighScore-1", activeImageNamed: "HighScore-1", disabledImageNamed: "HighScore-1")
+    
     
     func setController(controller : GameProtocol) {
         self.controller = controller
@@ -22,8 +25,9 @@ class OpeningScene : SKScene, Scene {
     override func didMoveToView(view: SKView) {
         addChild(playButton)
         playButton.zPosition = 1
-        playButton.position.x = 420
+        playButton.position.x = 460
         playButton.position.y = 130
+        setScale(0.8)
         playButton.selectedHandler = {
             //TODO: Move to the gameScene
            self.controller.startGame()
@@ -31,12 +35,24 @@ class OpeningScene : SKScene, Scene {
         
         addChild(tutorialButton)
         tutorialButton.zPosition = 1
-        tutorialButton.position.x = 420
+        tutorialButton.position.x = 460
         tutorialButton.position.y = 50
+        tutorialButton.setScale(0.98)
         tutorialButton.selectedHandler = {
             print("Help")
             //TODO: Move to the gameScene
             self.controller.tutorialScene()
+        }
+        
+        addChild(highScoreButton)
+        highScoreButton.zPosition = 1
+        highScoreButton.position.x = scene!.size.width/8
+        highScoreButton.position.y = scene!.size.height - scene!.size.height/10
+        highScoreButton.setScale(0.8)
+        highScoreButton.selectedHandler = {
+            print("Help")
+            //TODO: Move to the gameScene
+            self.controller.gameLimbo()
         }
     }
     

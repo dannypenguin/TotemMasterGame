@@ -9,12 +9,17 @@
 import UIKit
 import SpriteKit
 
+
 class GameViewController: UIViewController, GameProtocol {
     
     var score: Int = 0
     var playerTitle: String = "Monkey's Uncle"
     var playerExp: Int = 0
     var gameDis: CGFloat = 0.0
+    let highScoreKey = "highScoreKey"
+    let highTitleKey = "highTitleKey"
+    var careerDis: Int = 0
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +39,12 @@ class GameViewController: UIViewController, GameProtocol {
         if let scene = TutorialScene(fileNamed: "TutorialScene"){
             massageScene(scene)
         } 
+    }
+    
+    func gameLimbo() {
+        if let scene = GameLimbo(fileNamed: "GameLimbo") {
+            massageScene(scene)
+        }
     }
     
     func startGame() {
@@ -76,6 +87,8 @@ class GameViewController: UIViewController, GameProtocol {
     
     func getPlayerTitle() -> Int {
         let temp = getScore()
+        let careerScore = getCareerScore()
+        setCareerScore(careerScore + temp)
         var temp2 = 0
         if temp < 20 {
             temp2 = 0
@@ -181,5 +194,20 @@ class GameViewController: UIViewController, GameProtocol {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func getCareerScore() -> Int {
+        return NSUserDefaults.standardUserDefaults().integerForKey(highScoreKey)
+    }
+    
+    func setCareerScore(inc: Int) {
+        NSUserDefaults.standardUserDefaults().setInteger(inc, forKey: highScoreKey)
+    }
+    
+    func getCareerTitle() -> String {
+        return NSUserDefaults.standardUserDefaults().stringForKey(highTitleKey)!
+    }
+    func setCareerTitle(inc: String) {
+        NSUserDefaults.standardUserDefaults().setValue(inc, forKey: highTitleKey)
     }
 }
