@@ -107,7 +107,7 @@ class GameViewController: UIViewController, GameProtocol {
             temp2 = 6
         } else if temp >= 100 && temp < 400 {
             temp2 = 7
-        } else if temp >= 400 && temp < 800 {
+        } else if temp >= 400 {
             temp2 = 8
         }
         
