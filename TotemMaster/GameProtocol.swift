@@ -10,6 +10,7 @@ import SpriteKit
 
 protocol GameProtocol: class {
     func startGame()
+    func openingScene()
     func gameOver()
     func getScore() -> Int
     func incrementScore(bonus: Int) -> Int

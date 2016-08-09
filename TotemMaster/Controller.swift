@@ -11,5 +11,6 @@ import Foundation
 protocol Controller : class {
     func startGame()
     func gameOver()
+    func openingScene()
     //TODO: Expand with a High score function and define in Game View Controller
 }
