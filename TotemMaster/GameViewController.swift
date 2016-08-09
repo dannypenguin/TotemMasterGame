@@ -13,12 +13,13 @@ import SpriteKit
 class GameViewController: UIViewController, GameProtocol {
     
     var score: Int = 0
-    var playerTitle: String = "Monkey's Uncle"
+   // var playerTitle: String = "Monkey's Uncle"
     var playerExp: Int = 0
     var gameDis: CGFloat = 0.0
     let highScoreKey = "highScoreKey"
     let highTitleKey = "highTitleKey"
     var careerDis: Int = 0
+    var titleRankCheck:[String] = ["Monkey's Uncle", "Monkey Scrapper", "Monkey Collector", "Monkey Gatherer", "Monkey Trainer", "Monkey Mogul", "Monkey Maniac", "Monkey Master", "Monkey GrandMaster"]
 
 
     override func viewDidLoad() {
@@ -115,38 +116,47 @@ class GameViewController: UIViewController, GameProtocol {
         
     }
     
-    func setPlayerTitle() {
-        let rankScore = getPlayerTitle()
-        switch rankScore {
-        case 0:
-            self.playerTitle = "Monkey's Uncle"
-        case 1:
-            self.playerTitle = "Monkey Scrapper"
-        case 2:
-            self.playerTitle = "Monkey Collector"
-        case 3:
-            self.playerTitle = "Monkey Gatherer"
-        case 4:
-            self.playerTitle = "Monkey Trainer"
-        case 5:
-            self.playerTitle = "Monkey Mogul"
-        case 6:
-            self.playerTitle = "Monkey Maniac"
-        case 7:
-            self.playerTitle = "Monkey Master"
-        case 8:
-            self.playerTitle = "Monkey GrandMaster"
-        default:
-            self.playerTitle = "Error Loading Monkey Title"
-        }
-    }
+//    func setPlayerTitle() {
+//        let rankScore = getPlayerTitle()
+//        switch rankScore {
+//        case 0:
+//            self.playerTitle = title
+//        case 1:
+//            self.playerTitle = "Monkey Scrapper"
+//        case 2:
+//            self.playerTitle = "Monkey Collector"
+//        case 3:
+//            self.playerTitle = "Monkey Gatherer"
+//        case 4:
+//            self.playerTitle = "Monkey Trainer"
+//        case 5:
+//            self.playerTitle = "Monkey Mogul"
+//        case 6:
+//            self.playerTitle = "Monkey Maniac"
+//        case 7:
+//            self.playerTitle = "Monkey Master"
+//        case 8:
+//            self.playerTitle = "Monkey GrandMaster"
+//        default:
+//            self.playerTitle = "Error Loading Monkey Title"
+//        }
+//    }
     
     func gameOver() {
         if let scene = GameOverScene(fileNamed:"GameOverScene") {
             massageScene(scene)
             var monkeyTitle: SKLabelNode!
             monkeyTitle = scene.childNodeWithName("monkeyTitle") as! SKLabelNode
-            setPlayerTitle()
+            //setPlayerTitle()
+            ///////////////////////////////////
+            let tempTitle = getPlayerTitle()
+            let playerTitle = titleRankCheck[tempTitle]
+            
+            let oldCareerTitle = getCareerTitle()
+            if oldCareerTitle < tempTitle {
+                setCareerTitle(tempTitle)
+            }
+            //////////////////////////////////
             monkeyTitle.text = "Rank: \(playerTitle)"
             var gameDistanceLabel: SKLabelNode!
             gameDistanceLabel = scene.childNodeWithName("gameDistance") as! SKLabelNode
@@ -204,10 +214,17 @@ class GameViewController: UIViewController, GameProtocol {
         NSUserDefaults.standardUserDefaults().setInteger(inc, forKey: highScoreKey)
     }
     
-    func getCareerTitle() -> String {
-        return NSUserDefaults.standardUserDefaults().stringForKey(highTitleKey)!
+    func getCareerTitle() -> Int {
+        
+        let title = NSUserDefaults.standardUserDefaults().integerForKey(highTitleKey)
+        return title
     }
-    func setCareerTitle(inc: String) {
-        NSUserDefaults.standardUserDefaults().setValue(inc, forKey: highTitleKey)
+    func setCareerTitle(inc: Int) {
+        NSUserDefaults.standardUserDefaults().setInteger(inc, forKey: highTitleKey)
+    }
+    
+    func getCareerTitleAsString() -> String {
+        let temp = getCareerTitle()
+        return titleRankCheck[temp]
     }
 }

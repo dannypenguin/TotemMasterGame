@@ -13,6 +13,7 @@ class GameLimbo: SKScene, Scene {
     var controller : GameProtocol!
     var backButton = ButtonNode(normalImageNamed: "Back", activeImageNamed: "Back", disabledImageNamed: "Back")
     var highScore: SKLabelNode!
+    var highTitle: SKLabelNode!
     
     func setController(controller : GameProtocol) {
         self.controller = controller
@@ -28,9 +29,15 @@ class GameLimbo: SKScene, Scene {
             self.controller.openingScene()
         }
         highScore = scene!.childNodeWithName("HighScore") as! SKLabelNode
-        let careerScore = controller.getCareerScore()
+        highTitle = scene!.childNodeWithName("HighTitle") as!
+        SKLabelNode
         
+        let careerScore = controller.getCareerScore()
         highScore.text = "Career Banana Count: \(careerScore)"
+        
+        let careerTitle = controller.getCareerTitleAsString()
+        highTitle.text = "Career Title: \(careerTitle)"
+        
         
     }
     
