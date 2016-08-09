@@ -24,6 +24,8 @@ class GameViewController: UIViewController, GameProtocol {
     func openingScene() {
         if let scene = OpeningScene(fileNamed: "OpeningScene") {
             massageScene(scene)
+            
+            
         }
     }
     

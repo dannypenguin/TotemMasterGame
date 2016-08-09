@@ -12,6 +12,7 @@
 		30104CD71D38360600A8B548 /* BearTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30104CD61D38360600A8B548 /* BearTrap.sks */; };
 		30117D5F1D530D4500FB1EF7 /* SkyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30117D5E1D530D4500FB1EF7 /* SkyTimer.swift */; };
 		3016B1731D5920C000F8D415 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3016B1721D5920C000F8D415 /* ToggleButton.swift */; };
+		302C8C511D593612004811A0 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302C8C501D593612004811A0 /* ButtonNode.swift */; };
 		306AA2591D5264C6005F86F3 /* BananaShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306AA2581D5264C6005F86F3 /* BananaShot.swift */; };
 		306AF21D1D3D48600080FDA8 /* FireTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF21C1D3D48600080FDA8 /* FireTrap.sks */; };
 		306AF2211D3D4E270080FDA8 /* SimpleFireTrap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 306AF2201D3D4E270080FDA8 /* SimpleFireTrap.sks */; };
@@ -68,6 +69,7 @@
 		30104CD61D38360600A8B548 /* BearTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BearTrap.sks; sourceTree = "<group>"; };
 		30117D5E1D530D4500FB1EF7 /* SkyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyTimer.swift; sourceTree = "<group>"; };
 		3016B1721D5920C000F8D415 /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		302C8C501D593612004811A0 /* ButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		306AA2581D5264C6005F86F3 /* BananaShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BananaShot.swift; sourceTree = "<group>"; };
 		306AF21C1D3D48600080FDA8 /* FireTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireTrap.sks; sourceTree = "<group>"; };
 		306AF2201D3D4E270080FDA8 /* SimpleFireTrap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SimpleFireTrap.sks; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				30B59A9F1D356F7B00703245 /* AppDelegate.swift */,
 				30B74B231D4A8631007F34EB /* GameSceneCamera.sks */,
 				3016B1721D5920C000F8D415 /* ToggleButton.swift */,
+				302C8C501D593612004811A0 /* ButtonNode.swift */,
 				30B74B211D4A8607007F34EB /* GameSceneCamera.swift */,
 				30B59AA51D356F7B00703245 /* GameViewController.swift */,
 				30CE07C91D51182C00AC4B13 /* GameProtocol.swift */,
@@ -373,6 +376,7 @@
 				30C5B9791D3FF3A40081AD11 /* ArrowTrap.swift in Sources */,
 				30C5B9751D3FE7290081AD11 /* BearTrap.swift in Sources */,
 				30117D5F1D530D4500FB1EF7 /* SkyTimer.swift in Sources */,
+				302C8C511D593612004811A0 /* ButtonNode.swift in Sources */,
 				30104CD31D38188300A8B548 /* FireTrap.swift in Sources */,
 				30B74B221D4A8607007F34EB /* GameSceneCamera.swift in Sources */,
 				30CD9FAC1D42963B00B09B95 /* Totem.swift in Sources */,

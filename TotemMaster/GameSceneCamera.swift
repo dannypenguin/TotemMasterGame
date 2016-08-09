@@ -398,6 +398,22 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
 
     var lastUpdateTime: NSTimeInterval = 0
     
+    func howFastCanYouGo() -> CGFloat {
+        var dx: CGFloat = CGFloat(pow(gameDistance, 0.5)) / self.cameraFactor + cameraspeed
+        var temp = gameDistance/60
+
+        if temp <= 100 {
+            return dx
+        } else if temp <= 200 {
+            dx = CGFloat(pow(gameDistance*2,0.5)) / self.cameraFactor + cameraspeed
+            return dx
+            
+        } else {
+            dx = CGFloat(pow(gameDistance*3,0.5)) / self.cameraFactor + cameraspeed
+            return dx
+        }
+    }
+    
     override func update(currentTime: NSTimeInterval) {
         
         var deltaTime: CFTimeInterval = currentTime - lastUpdateTime
@@ -412,9 +428,9 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             gamepro.gameOver()
         }
         if !terminateScene {
-            let dx: CGFloat = CGFloat(pow(gameDistance, 0.5)) / self.cameraFactor + cameraspeed
+            //let dx: CGFloat = CGFloat(pow(gameDistance, 0.5)) / self.cameraFactor + cameraspeed
             
-            myCamera.position.x -= dx * 60 * CGFloat(deltaTime)
+            myCamera.position.x -= howFastCanYouGo() * 60 * CGFloat(deltaTime)
             scrollSceneNodes()
             updateTraps()
             updateBananas()
@@ -423,6 +439,8 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             
         }
     }
+    
+    
     
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
