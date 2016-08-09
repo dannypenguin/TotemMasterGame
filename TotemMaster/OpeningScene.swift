@@ -14,6 +14,8 @@ class OpeningScene : SKScene, Scene {
     var controller : GameProtocol!
     var playButton = ButtonNode(normalImageNamed: "PlayButton-1", activeImageNamed: "PlayButton-1", disabledImageNamed: "PlayButton-1")
     
+     var tutorialButton = ButtonNode(normalImageNamed: "Tutorial", activeImageNamed: "Tutorial", disabledImageNamed: "Tutorial")
+    
     func setController(controller : GameProtocol) {
         self.controller = controller
     }
@@ -25,6 +27,16 @@ class OpeningScene : SKScene, Scene {
         playButton.selectedHandler = {
             //TODO: Move to the gameScene
            self.controller.startGame()
+        }
+        
+        addChild(tutorialButton)
+        tutorialButton.zPosition = 1
+        tutorialButton.position.x = 420
+        tutorialButton.position.y = 50
+        tutorialButton.selectedHandler = {
+            print("Help")
+            //TODO: Move to the gameScene
+            self.controller.tutorialScene()
         }
     }
     

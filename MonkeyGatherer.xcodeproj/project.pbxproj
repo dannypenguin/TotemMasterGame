@@ -34,6 +34,8 @@
 		30C5B97B1D3FF54B0081AD11 /* ArrowWoosh.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30C5B97A1D3FF54B0081AD11 /* ArrowWoosh.sks */; };
 		30C5B97D1D4010C20081AD11 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C5B97C1D4010C20081AD11 /* Player.swift */; };
 		30C5B97F1D40440D0081AD11 /* Trap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C5B97E1D40440D0081AD11 /* Trap.swift */; };
+		30C7E7271D5A48E10007E7A4 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C7E7261D5A48E10007E7A4 /* TutorialScene.swift */; };
+		30C7E72B1D5A5EE20007E7A4 /* TutorialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30C7E72A1D5A5EE20007E7A4 /* TutorialScene.sks */; };
 		30CD9FAA1D4293DF00B09B95 /* DoorTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */; };
 		30CD9FAC1D42963B00B09B95 /* Totem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CD9FAB1D42963B00B09B95 /* Totem.swift */; };
 		30CE07BE1D51030200AC4B13 /* OpeningScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30CE07BD1D51030200AC4B13 /* OpeningScene.sks */; };
@@ -97,6 +99,8 @@
 		30C5B97A1D3FF54B0081AD11 /* ArrowWoosh.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ArrowWoosh.sks; sourceTree = "<group>"; };
 		30C5B97C1D4010C20081AD11 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		30C5B97E1D40440D0081AD11 /* Trap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trap.swift; sourceTree = "<group>"; };
+		30C7E7261D5A48E10007E7A4 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
+		30C7E72A1D5A5EE20007E7A4 /* TutorialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TutorialScene.sks; sourceTree = "<group>"; };
 		30CD9FA91D4293DF00B09B95 /* DoorTrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorTrap.swift; sourceTree = "<group>"; };
 		30CD9FAB1D42963B00B09B95 /* Totem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Totem.swift; sourceTree = "<group>"; };
 		30CE07BD1D51030200AC4B13 /* OpeningScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OpeningScene.sks; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				30CE07C51D5108D000AC4B13 /* Controller.swift */,
 				30CE07BD1D51030200AC4B13 /* OpeningScene.sks */,
 				30CE07C71D51090000AC4B13 /* OpeningScene.swift */,
+				30C7E7261D5A48E10007E7A4 /* TutorialScene.swift */,
+				30C7E72A1D5A5EE20007E7A4 /* TutorialScene.sks */,
 				30CE07BF1D5105C900AC4B13 /* GameOverScene.sks */,
 				30CE07C11D51085A00AC4B13 /* GameOverScene.swift */,
 				30117D5E1D530D4500FB1EF7 /* SkyTimer.swift */,
@@ -330,6 +336,7 @@
 			files = (
 				306AF2261D3D7E710080FDA8 /* spark.png in Resources */,
 				30B74B241D4A8631007F34EB /* GameSceneCamera.sks in Resources */,
+				30C7E72B1D5A5EE20007E7A4 /* TutorialScene.sks in Resources */,
 				306AF2211D3D4E270080FDA8 /* SimpleFireTrap.sks in Resources */,
 				306AF21D1D3D48600080FDA8 /* FireTrap.sks in Resources */,
 				30104CD71D38360600A8B548 /* BearTrap.sks in Resources */,
@@ -377,6 +384,7 @@
 				30C5B9751D3FE7290081AD11 /* BearTrap.swift in Sources */,
 				30117D5F1D530D4500FB1EF7 /* SkyTimer.swift in Sources */,
 				302C8C511D593612004811A0 /* ButtonNode.swift in Sources */,
+				30C7E7271D5A48E10007E7A4 /* TutorialScene.swift in Sources */,
 				30104CD31D38188300A8B548 /* FireTrap.swift in Sources */,
 				30B74B221D4A8607007F34EB /* GameSceneCamera.swift in Sources */,
 				30CD9FAC1D42963B00B09B95 /* Totem.swift in Sources */,
