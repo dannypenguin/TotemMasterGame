@@ -35,9 +35,6 @@ class GameViewController: UIViewController, GameProtocol {
     }
     
     func tutorialScene() {
-        //let scene = TutorialScene(size: view.frame.size)
-        //massageScene(scene)
-        
         if let scene = TutorialScene(fileNamed: "TutorialScene"){
             massageScene(scene)
         } 

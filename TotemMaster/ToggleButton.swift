@@ -19,7 +19,6 @@ class ToggleButton: SKSpriteNode {
             } else {
                 texture = unselectedTexture
                 selectedHandler()
-
             }
         }
     }

@@ -14,5 +14,4 @@ protocol Controller : class {
     func openingScene()
     func tutorialScene()
     func gameLimbo()
-    //TODO: Expand with a High score function and define in Game View Controller
 }

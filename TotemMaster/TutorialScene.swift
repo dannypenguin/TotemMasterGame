@@ -46,13 +46,10 @@ class TutorialScene: SKScene, Scene {
             nextSlide = 0
             return textures[nextSlide]
         }
-        //return nil
-        //return textures[abs(nextSlide % 4)]
     }
 
     
     override func didMoveToView(view: SKView) {
-        let texture = SKTexture(imageNamed: "Jungle1")
         for i in 1...4 {
             textures.append(SKTexture(imageNamed: "Jungle\(i)"))
         }
@@ -78,7 +75,6 @@ class TutorialScene: SKScene, Scene {
         backButton.position.y = scene!.size.height - (scene!.size.height/8) * 7
         backButton.setScale(0.9)
         backButton.selectedHandler = {
-            //TODO: Move to the gameScene
             self.controller.openingScene()
         }
         

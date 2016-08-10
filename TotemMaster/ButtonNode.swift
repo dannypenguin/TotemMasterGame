@@ -41,6 +41,7 @@ class ButtonNode: SKSpriteNode {
     
     func setButtonState() {
         switch state {
+            
         case .Normal:
             texture = normal
             userInteractionEnabled = true
@@ -51,7 +52,6 @@ class ButtonNode: SKSpriteNode {
         case .Disabled:
             texture = disabled
             userInteractionEnabled = false
-            
         }
     }
     
@@ -60,7 +60,6 @@ class ButtonNode: SKSpriteNode {
             setButtonState()
         }
     }
-    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         state = .Active
@@ -71,8 +70,6 @@ class ButtonNode: SKSpriteNode {
         state = .Normal
     }
     
-    
-    
     init(normalImageNamed: String, activeImageNamed: String, disabledImageNamed: String) {
         normal = SKTexture(imageNamed: normalImageNamed)
         active = SKTexture(imageNamed: activeImageNamed)
@@ -81,7 +78,6 @@ class ButtonNode: SKSpriteNode {
         super.init(texture: normal, color: UIColor.clearColor(), size: normal.size())
         
         userInteractionEnabled = true
-        
         state = .Normal
         setButtonState()
     }
@@ -89,5 +85,4 @@ class ButtonNode: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

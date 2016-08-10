@@ -29,7 +29,6 @@ class OpeningScene : SKScene, Scene {
         playButton.position.y = 130
         setScale(0.8)
         playButton.selectedHandler = {
-            //TODO: Move to the gameScene
            self.controller.startGame()
         }
         
@@ -40,7 +39,6 @@ class OpeningScene : SKScene, Scene {
         tutorialButton.setScale(0.98)
         tutorialButton.selectedHandler = {
             print("Help")
-            //TODO: Move to the gameScene
             self.controller.tutorialScene()
         }
         
@@ -51,7 +49,6 @@ class OpeningScene : SKScene, Scene {
         highScoreButton.setScale(0.8)
         highScoreButton.selectedHandler = {
             print("Help")
-            //TODO: Move to the gameScene
             self.controller.gameLimbo()
         }
     }

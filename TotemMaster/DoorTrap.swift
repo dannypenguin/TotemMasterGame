@@ -16,7 +16,6 @@ class DoorTrap : Trap {
         
         let texture = SKTexture(imageNamed: "trapDoor1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
-         //anchorPoint = CGPoint(x: 0, y: 0)
          var textures = [SKTexture]()
          for i in 1...4 {
          textures.append(SKTexture(imageNamed: "trapDoor\(i)"))

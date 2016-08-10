@@ -16,14 +16,10 @@ struct PhysicsCategory {
     static let Part: UInt32 = 0b1000
 }
 
-
-
 class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate {
     
     var floor1: SKSpriteNode!
     var floor2: SKSpriteNode!
-    
-    
     var lifeBarFront: SKSpriteNode!
     
     var myCamera: SKCameraNode!
@@ -122,11 +118,11 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         pauseButton.selectedHandler = {
             //TODO: Pause Game Here
             print("should be pausing game...")
-            var wait = SKAction.waitForDuration(0.05)
-            var pause = SKAction.runBlock({ 
+            let wait = SKAction.waitForDuration(0.05)
+            let pause = SKAction.runBlock({
                 self.scene!.paused = true
             })
-            var sequence = SKAction.sequence([wait, pause])
+            let sequence = SKAction.sequence([wait, pause])
             self.runAction(sequence)
         }
         pauseButton.unselectedHandler = {
@@ -210,7 +206,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         
         myCamera.addChild(totem)
         
-        totem.position.x = -scene!.size.width/3 //-190
+        totem.position.x = -scene!.size.width/3
         totem.position.y = ypos
         totem.zPosition = 50
         totem.anchorPoint.x = 0.5
@@ -230,7 +226,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     }
     
     func fireBanana() {
-        var bananaPoint: CGPoint?
+        
         var offset: CGFloat = frame.width
         var removeTrapAction: SKAction?
         if  gamepro.getScore() > 0 {
@@ -240,7 +236,6 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
                     removeTrapAction = SKAction.runBlock({ 
                         self.removeTrap(trap)
                     })
-                    bananaPoint = trap.position
                     offset = masterDan.position.x - trap.position.x
                 }
             }
@@ -248,7 +243,6 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             self.addChild(bananagun)
             bananagun.position = masterDan.position
             bananagun.zPosition = masterDan.zPosition - 0.1
-            //let totempos = bananaPoint ?? self.convertPoint(totem.position, fromNode: totem.parent!)
             let moveBanana = SKAction.moveByX(-offset, y: 0, duration: Double(offset/frame.width) * 0.5)
             firedBanana = true
             updateScore(1)
@@ -262,6 +256,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             let removeBanana = SKAction.removeFromParent()
             
             let sequence = SKAction.sequence([moveBanana,removeTrapAction ?? placateBoss, removeBanana])
+            
             bananagun.runAction(sequence)
         }
     }
@@ -293,15 +288,14 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
         let y = 58 + characterY * 102
         var x = 142 * characterX + masterDan.position.x
         
-        //if x < myCamera.position
         print(x,characterX, myCamera.position.x)
         if x < myCamera.position.x - frame.width * 0.35 {
             x = myCamera.position.x - frame.width * 0.35
         }
         
         let moveAction  = SKAction.moveTo(CGPoint(x: x, y: y), duration: 0.2)
-        //masterDan.removeActionForKey("move")
-        masterDan.runAction(moveAction)//, withKey: "move")
+       
+        masterDan.runAction(moveAction)
         
         let newDistance = scene!.frame.width/2 - masterDan.position.x
         if newDistance > gameDistance {
@@ -400,7 +394,7 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
     
     func howFastCanYouGo() -> CGFloat {
         var dx: CGFloat = CGFloat(pow(gameDistance, 0.5)) / self.cameraFactor + cameraspeed
-        var temp = gameDistance/60
+        let temp = gameDistance/60
 
         if temp <= 100 {
             return dx
@@ -428,8 +422,6 @@ class GameSceneCamera : SKScene, Scene, SKPhysicsContactDelegate, TotemDelegate 
             gamepro.gameOver()
         }
         if !terminateScene {
-            //let dx: CGFloat = CGFloat(pow(gameDistance, 0.5)) / self.cameraFactor + cameraspeed
-            
             myCamera.position.x -= howFastCanYouGo() * 60 * CGFloat(deltaTime)
             scrollSceneNodes()
             updateTraps()
@@ -457,7 +449,7 @@ extension GameSceneCamera {
     func scrollSceneNodes() {
         for node in makingFloor {
             let x = node.position.x - myCamera.position.x
-            if x > scene!.size.width /*view!.frame.width*/ {
+            if x > scene!.size.width {
                 node.position.x -= floorWidth * 2
             }
         }
@@ -470,7 +462,7 @@ extension GameSceneCamera {
         if collision == PhysicsCategory.Player | PhysicsCategory.Trap {
             var player: Player!
             var trap: SKSpriteNode!
-            //print("Player Hit Trap")
+            
             if contact.bodyA.node!.name == "trap" {
                 trap = contact.bodyA.node as! SKSpriteNode
                 player = contact.bodyB.node as! Player
@@ -489,7 +481,6 @@ extension GameSceneCamera {
             }
         }
         else if collision == PhysicsCategory.Player | PhysicsCategory.Totem {
-            //print("Player Hit Totem")
         }
     }
 }
@@ -530,7 +521,6 @@ extension GameSceneCamera {
         }
         if let t = trap {
             t.position.x = totem.position.x + myCamera.position.x
-            //t.position.y = totem.generatePos(totem.position.y)
             t.position.y = totem.position.y
             t.anchorPoint.x = 0.5
             t.anchorPoint.y = 0.5

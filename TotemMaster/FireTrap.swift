@@ -19,7 +19,6 @@ class FireTrap : Trap {
 
         let texture = SKTexture(imageNamed: "firePitRev1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
-        //anchorPoint = CGPoint(x: 0, y: 0)
         var textures = [SKTexture]()
         for i in 1...3 {
             textures.append(SKTexture(imageNamed: "firePitRev\(i)"))
