@@ -18,6 +18,7 @@ class GameViewController: UIViewController, GameProtocol {
     var gameDis: CGFloat = 0.0
     let highScoreKey = "highScoreKey"
     let highTitleKey = "highTitleKey"
+    let longDistanceKey = "longDistanceKey"
     var careerDis: Int = 0
     var titleRankCheck:[String] = ["Monkey's Uncle", "Monkey Scrapper", "Monkey Collector", "Monkey Gatherer", "Monkey Trainer", "Monkey Mogul", "Monkey Maniac", "Monkey Master", "Monkey GrandMaster"]
 
@@ -116,39 +117,12 @@ class GameViewController: UIViewController, GameProtocol {
         
     }
     
-//    func setPlayerTitle() {
-//        let rankScore = getPlayerTitle()
-//        switch rankScore {
-//        case 0:
-//            self.playerTitle = title
-//        case 1:
-//            self.playerTitle = "Monkey Scrapper"
-//        case 2:
-//            self.playerTitle = "Monkey Collector"
-//        case 3:
-//            self.playerTitle = "Monkey Gatherer"
-//        case 4:
-//            self.playerTitle = "Monkey Trainer"
-//        case 5:
-//            self.playerTitle = "Monkey Mogul"
-//        case 6:
-//            self.playerTitle = "Monkey Maniac"
-//        case 7:
-//            self.playerTitle = "Monkey Master"
-//        case 8:
-//            self.playerTitle = "Monkey GrandMaster"
-//        default:
-//            self.playerTitle = "Error Loading Monkey Title"
-//        }
-//    }
     
     func gameOver() {
         if let scene = GameOverScene(fileNamed:"GameOverScene") {
             massageScene(scene)
             var monkeyTitle: SKLabelNode!
             monkeyTitle = scene.childNodeWithName("monkeyTitle") as! SKLabelNode
-            //setPlayerTitle()
-            ///////////////////////////////////
             let tempTitle = getPlayerTitle()
             let playerTitle = titleRankCheck[tempTitle]
             
@@ -156,13 +130,21 @@ class GameViewController: UIViewController, GameProtocol {
             if oldCareerTitle < tempTitle {
                 setCareerTitle(tempTitle)
             }
-            //////////////////////////////////
             monkeyTitle.text = "Rank: \(playerTitle)"
             var gameDistanceLabel: SKLabelNode!
             gameDistanceLabel = scene.childNodeWithName("gameDistance") as! SKLabelNode
             let retrieveDis = self.gameDis
-            let calculateDis = retrieveDis/60
+            let calculateDis = Int(retrieveDis/60)
+            
+            let tempDistance = getCareerLongDis()
+            if tempDistance < calculateDis {
+                setCareerLongDis(calculateDis)
+            }
+            
+            
+            
             gameDistanceLabel.text = "Distance: \(Int(calculateDis)) Banana Feet"
+            
             
             
             
@@ -227,4 +209,14 @@ class GameViewController: UIViewController, GameProtocol {
         let temp = getCareerTitle()
         return titleRankCheck[temp]
     }
+    
+    func getCareerLongDis() -> Int {
+        let longDis = NSUserDefaults.standardUserDefaults().integerForKey(longDistanceKey)
+            return longDis
+    }
+    
+    func setCareerLongDis(inc: Int){
+        NSUserDefaults.standardUserDefaults().setInteger(inc, forKey: longDistanceKey)
+    }
+    
 }

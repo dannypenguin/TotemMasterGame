@@ -19,6 +19,8 @@ protocol GameProtocol: class {
     func getCareerTitle() -> Int
     func getCareerTitleAsString() -> String
     func setCareerTitle(inc: Int)
+    func getCareerLongDis()-> Int
+    func setCareerLongDis(inc: Int)
     func getScore() -> Int
     func incrementScore(bonus: Int) -> Int
     func setScoreGame(dec: Int) -> Int
