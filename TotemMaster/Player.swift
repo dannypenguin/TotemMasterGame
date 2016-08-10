@@ -16,12 +16,12 @@ class Player : SKSpriteNode {
     var health = maxHealth
     
     init() {
-        let texture = SKTexture(imageNamed: "monkey1")
+        let texture = SKTexture(imageNamed: "Monkey1")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
         
         var textures = [SKTexture]()
         for i in 1...5 {
-            textures.append(SKTexture(imageNamed: "monkey\(i)"))
+            textures.append(SKTexture(imageNamed: "Monkey\(i)"))
         }
         
         physicsBody = SKPhysicsBody(circleOfRadius: 25)

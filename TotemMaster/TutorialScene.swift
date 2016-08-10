@@ -74,8 +74,9 @@ class TutorialScene: SKScene, Scene {
         
         addChild(backButton)
         backButton.zPosition = 1
-        backButton.position.x = scene!.size.width - scene!.size.width/8
+        backButton.position.x = scene!.size.width - (scene!.size.width/8) * 7
         backButton.position.y = scene!.size.height - (scene!.size.height/8) * 7
+        backButton.setScale(0.9)
         backButton.selectedHandler = {
             //TODO: Move to the gameScene
             self.controller.openingScene()
